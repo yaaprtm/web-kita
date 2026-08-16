@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Heart, Sparkles, ArrowUp, Gift } from 'lucide-react';
+import { Heart, ArrowUp, Gift } from 'lucide-react';
 import Link from 'next/link';
 import { coupleData } from '@/data/couple';
 
@@ -11,39 +11,35 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="relative bg-warm-900 text-ivory-50 pt-16 pb-12 px-4 overflow-hidden border-t border-rosegold-gold/20">
-      {/* Decorative Glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-40 bg-blush-500/10 rounded-full blur-3xl" />
-
+    <footer className="relative bg-warm-900 text-ivory-50 pt-16 pb-12 px-4 overflow-hidden border-t-2 border-dashed border-warm-700">
       <div className="max-w-4xl mx-auto text-center relative z-10 flex flex-col items-center">
         
         {/* Heart Icon */}
-        <div className="w-12 h-12 rounded-full bg-blush-500/20 border border-blush-400/40 flex items-center justify-center text-blush-300 mb-6 shadow-rose-glow">
-          <Heart size={22} className="fill-current animate-pulse text-blush-400" />
+        <div className="w-12 h-12 rounded-full bg-dusty-rose/20 border border-dusty-pink/40 flex items-center justify-center text-dusty-pink mb-4 shadow-rose-glow">
+          <Heart size={22} className="fill-current animate-pulse text-dusty-pink" />
         </div>
 
-        {/* Closing Title */}
-        <h3 className="font-serif text-3xl md:text-4xl font-bold text-white mb-3 tracking-wide">
-          {coupleData.groomName} <span className="font-script text-rosegold-gold text-4xl md:text-5xl">&</span> {coupleData.brideName}
+        {/* Title */}
+        <h3 className="font-hand text-4xl md:text-5xl font-bold text-white mb-2 tracking-wide">
+          {coupleData.groomName} <span className="text-dusty-pink">&</span> {coupleData.brideName}
         </h3>
 
-        {/* Romantic Closing Statement */}
-        <p className="font-serif italic text-ivory-200 text-base md:text-lg max-w-lg mx-auto mb-8 leading-relaxed font-light">
-          &ldquo;Terima kasih telah menjadi bagian dari perjalanan dan cerita hangat kami. Semoga cinta dan kebahagiaan senantiasa menyertai kita semua.&rdquo;
+        {/* Closing Note */}
+        <p className="font-hand text-xl text-ivory-200 max-w-lg mx-auto mb-6 leading-relaxed italic">
+          &ldquo;terima kasih sudah mampir dan baca jurnal kecil cerita kita. semoga harimu menyenangkan! 🧡&rdquo;
         </p>
 
         {/* Anniversary Badge */}
-        <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold uppercase tracking-widest text-rosegold-light mb-6">
-          <Sparkles size={14} className="text-rosegold-gold" />
-          <span>Resmi Berpasangan • 2 November 2025</span>
+        <div className="tape-strip text-sm font-hand text-warm-800 mb-6">
+          ✨ resmi jadian • 2 November 2025
         </div>
 
         {/* Anniversary Page Link */}
         <Link
           href="/anniversary"
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-blush-500/20 border border-blush-400/30 hover:border-blush-400/60 text-blush-300 hover:text-white text-sm font-medium transition-all duration-200 mb-10 group"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-dusty-rose/30 border border-white/20 text-ivory-100 hover:text-white font-hand text-lg transition-all duration-200 mb-10 group"
         >
-          <Gift size={15} className="group-hover:animate-bounce" />
+          <Gift size={16} className="group-hover:animate-bounce text-mustard-300" />
           <span>Kejutan Anniversary Pertama 🎁</span>
         </Link>
 
@@ -51,14 +47,14 @@ export const Footer: React.FC = () => {
         <div className="w-full max-w-xs h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-8" />
 
         {/* Copyright & Back To Top */}
-        <div className="w-full flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-warm-200 font-light">
-          <p>© {new Date().getFullYear()} Website Couple Arya & Nadina. Dibuat dengan penuh cinta.</p>
+        <div className="w-full flex flex-col md:flex-row items-center justify-between gap-4 font-hand text-base text-ivory-300">
+          <p>© {new Date().getFullYear()} Jurnal Digital Arya & Nadina. dibuat penuh cinta.</p>
 
           <button
             onClick={scrollToTop}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all text-xs font-medium border border-white/20 group"
+            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-hand text-base transition-all border border-white/20 group"
           >
-            <span>Kembali ke Atas</span>
+            <span>ke atas</span>
             <ArrowUp size={14} className="group-hover:-translate-y-0.5 transition-transform" />
           </button>
         </div>

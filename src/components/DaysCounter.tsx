@@ -1,159 +1,93 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Calendar, Heart, Clock } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 import { coupleData } from '@/data/couple';
+import { DoodleHeart } from './Doodles';
 
 interface Duration {
-  years: number;
-  months: number;
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
+  years: number; months: number; days: number;
+  hours: number; minutes: number; seconds: number;
   totalDays: number;
 }
 
 export const DaysCounter: React.FC = () => {
-  const [duration, setDuration] = useState<Duration>({
-    years: 0,
-    months: 0,
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-    totalDays: 0,
-  });
-
+  const [duration, setDuration] = useState<Duration>({ years: 0, months: 0, days: 0, hours: 0, minutes: 0, seconds: 0, totalDays: 0 });
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
     const startDate = new Date(coupleData.anniversaryDate);
-
-    const updateCounter = () => {
+    const update = () => {
       const now = new Date();
-
-      // Ensure valid calculation if now is before start date in test environment
-      if (now < startDate) {
-        setDuration({
-          years: 0,
-          months: 0,
-          days: 0,
-          hours: 0,
-          minutes: 0,
-          seconds: 0,
-          totalDays: 0,
-        });
-        return;
-      }
-
-      // Calculate total difference in milliseconds
+      if (now < startDate) { setDuration({ years: 0, months: 0, days: 0, hours: 0, minutes: 0, seconds: 0, totalDays: 0 }); return; }
       const diffMs = now.getTime() - startDate.getTime();
       const totalDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-
-      // Calculate precise calendar Years, Months, Days
       let years = now.getFullYear() - startDate.getFullYear();
       let months = now.getMonth() - startDate.getMonth();
       let days = now.getDate() - startDate.getDate();
-
-      if (days < 0) {
-        months -= 1;
-        // Days in previous month
-        const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
-        days += prevMonth.getDate();
-      }
-
-      if (months < 0) {
-        years -= 1;
-        months += 12;
-      }
-
-      const hours = now.getHours();
-      const minutes = now.getMinutes();
-      const seconds = now.getSeconds();
-
-      setDuration({
-        years,
-        months,
-        days,
-        hours,
-        minutes,
-        seconds,
-        totalDays,
-      });
+      if (days < 0) { months--; days += new Date(now.getFullYear(), now.getMonth(), 0).getDate(); }
+      if (months < 0) { years--; months += 12; }
+      setDuration({ years, months, days, hours: now.getHours(), minutes: now.getMinutes(), seconds: now.getSeconds(), totalDays });
     };
-
-    updateCounter();
-    const interval = setInterval(updateCounter, 1000);
-    return () => clearInterval(interval);
+    update();
+    const id = setInterval(update, 1000);
+    return () => clearInterval(id);
   }, []);
 
-  if (!isClient) {
-    return (
-      <div className="w-full py-8 flex items-center justify-center">
-        <div className="animate-pulse flex gap-4">
-          <div className="w-20 h-20 bg-blush-100/50 rounded-2xl" />
-          <div className="w-20 h-20 bg-blush-100/50 rounded-2xl" />
-          <div className="w-20 h-20 bg-blush-100/50 rounded-2xl" />
-        </div>
-      </div>
-    );
-  }
+  if (!isClient) return null;
 
   const timeUnits = [
-    { label: 'Tahun', value: duration.years },
-    { label: 'Bulan', value: duration.months },
-    { label: 'Hari', value: duration.days },
-    { label: 'Jam', value: duration.hours },
-    { label: 'Menit', value: duration.minutes },
-    { label: 'Detik', value: duration.seconds },
+    { label: 'tahun', value: duration.years },
+    { label: 'bulan', value: duration.months },
+    { label: 'hari', value: duration.days },
+    { label: 'jam', value: duration.hours },
+    { label: 'menit', value: duration.minutes },
+    { label: 'detik', value: duration.seconds },
   ];
 
   return (
-    <div id="counter" className="w-full max-w-4xl mx-auto my-6 px-4">
-      <div className="bg-white/70 backdrop-blur-xl rounded-3xl p-6 md:p-10 border border-blush-200/60 shadow-soft-pink text-center relative overflow-hidden group">
-        
-        {/* Glow backdrop */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blush-100/30 via-ivory-100/50 to-rosegold-light/20 -z-10" />
+    <div id="counter" className="w-full max-w-3xl mx-auto my-6 px-4">
+      <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-6 md:p-8 border-2 border-dashed border-dusty-pink/40 shadow-card-warm text-center relative">
+        {/* Corner doodles */}
+        <DoodleHeart className="absolute top-3 left-3 text-dusty-rose opacity-40" size={20} />
+        <DoodleHeart className="absolute top-3 right-3 text-mustard-500 opacity-40" size={16} />
 
-        {/* Section Header */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blush-50 border border-blush-200 text-blush-500 text-xs font-semibold tracking-wider uppercase mb-3">
-          <Calendar size={14} className="text-rosegold-gold" />
-          <span>Tanggal Jadian: 2 November 2025</span>
+        {/* Yellow tape label on top */}
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+          <div className="tape-strip text-sm font-hand text-warm-800 flex items-center gap-1.5">
+            <Calendar size={13} className="text-dusty-rose" />
+            jadian sejak 2 November 2025
+          </div>
         </div>
 
-        <h3 className="font-serif text-2xl md:text-3xl font-bold text-warm-900 mb-2">
-          Sudah Bersama Selama
+        <h3 className="font-hand text-2xl md:text-3xl font-bold text-warm-900 mb-1 mt-2">
+          sudah bareng selama...
         </h3>
-        
-        <p className="text-sm text-warm-700 max-w-md mx-auto mb-8 font-light">
-          Total <span className="font-semibold text-blush-500">{duration.totalDays} hari</span> penuh cerita, senyuman, dan cinta yang tumbuh setiap harinya.
+        <p className="font-sans text-sm text-warm-700 mb-6">
+          total <span className="font-semibold text-dusty-rose">{duration.totalDays} hari</span> penuh cerita dan tawa 🧡
         </p>
 
-        {/* Counter Grid */}
-        <div className="grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-4 mb-6">
+        {/* Counter boxes — scrapbook stamp style */}
+        <div className="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-3 mb-4">
           {timeUnits.map((unit, idx) => (
             <div
               key={idx}
-              className="bg-ivory-50/90 border border-blush-100 rounded-2xl p-3 md:p-4 shadow-sm hover:shadow-md hover:border-blush-300 hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center"
+              className="bg-ivory-100 border-2 border-warm-200 rounded-xl px-2 py-3 text-center hover:border-dusty-pink hover:-translate-y-1 transition-all duration-200"
             >
-              <span className="font-serif text-2xl md:text-4xl font-extrabold bg-gradient-to-b from-warm-900 to-warm-700 bg-clip-text text-transparent">
+              <span className="font-hand text-3xl md:text-4xl font-bold text-warm-900 block">
                 {String(unit.value).padStart(2, '0')}
               </span>
-              <span className="text-[11px] md:text-xs font-medium text-warm-700 uppercase tracking-widest mt-1">
+              <span className="font-hand text-xs text-warm-700 uppercase tracking-wide mt-1 block">
                 {unit.label}
               </span>
             </div>
           ))}
         </div>
 
-        {/* Footer Note */}
-        <div className="inline-flex items-center gap-2 text-xs font-medium text-warm-700 bg-white/80 px-4 py-2 rounded-full border border-blush-100 shadow-xs">
-          <Clock size={13} className="text-rosegold-gold" />
-          <span>Real-time counter • Update setiap detik</span>
-          <Heart size={12} className="text-blush-500 fill-current animate-pulse" />
-        </div>
+        <p className="font-hand text-sm text-warm-600 opacity-70">
+          ⏱️ update tiap detik
+        </p>
       </div>
     </div>
   );

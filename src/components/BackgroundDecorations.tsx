@@ -1,34 +1,9 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { Heart, Sparkles, Volume2, VolumeX } from 'lucide-react';
+import React from 'react';
+import { Heart, Sparkles } from 'lucide-react';
 
 export const BackgroundDecorations: React.FC = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
-
-  useEffect(() => {
-    // Royalty-free acoustic romantic background music sample
-    const bgAudio = new Audio('https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-acoustic-guitar-114408.mp3');
-    bgAudio.loop = true;
-    bgAudio.volume = 0.3;
-    setAudio(bgAudio);
-
-    return () => {
-      bgAudio.pause();
-    };
-  }, []);
-
-  const toggleMusic = () => {
-    if (!audio) return;
-    if (isPlaying) {
-      audio.pause();
-      setIsPlaying(false);
-    } else {
-      audio.play().then(() => setIsPlaying(true)).catch(err => console.log('Audio playback policy:', err));
-    }
-  };
-
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
       {/* Background Soft Glow Radial Gradients */}
@@ -67,29 +42,6 @@ export const BackgroundDecorations: React.FC = () => {
           <circle cx="45" cy="70" r="2" fill="currentColor" />
         </svg>
       </div>
-
-      {/* Ambient Audio Floating Toggle Button */}
-      <button
-        onClick={toggleMusic}
-        className="pointer-events-auto fixed bottom-6 right-6 z-50 p-3.5 rounded-full bg-white/80 backdrop-blur-md border border-blush-200 text-warm-800 shadow-lg hover:shadow-rose-glow hover:scale-105 transition-all duration-300 flex items-center gap-2 group"
-        title={isPlaying ? "Matikan Musik Background" : "Putar Musik Background Romantis"}
-      >
-        {isPlaying ? (
-          <>
-            <Volume2 className="w-5 h-5 text-blush-500 animate-pulse" />
-            <span className="text-xs font-medium text-warm-800 max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 whitespace-nowrap pr-1">
-              Musik Aktif
-            </span>
-          </>
-        ) : (
-          <>
-            <VolumeX className="w-5 h-5 text-warm-700" />
-            <span className="text-xs font-medium text-warm-800 max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 whitespace-nowrap pr-1">
-              Putar Musik
-            </span>
-          </>
-        )}
-      </button>
     </div>
   );
 };

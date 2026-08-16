@@ -17,9 +17,9 @@ export const coupleData: CoupleInfo = {
   coupleTitle: "Arya & Nadina",
   // Tanggal jadian resmi: 2 November 2025
   anniversaryDate: "2025-11-02T00:00:00",
-  tagline: "Sebuah cerita yang dimulai dari secangkir kopi, dan terus berlanjut hingga kini.",
-  subTagline: "Menghitung setiap detik berharga yang kita lalui bersama dalam rasa cinta dan hangatnya kebersamaan.",
-  // Foto placeholder berkualitas tinggi bernuansa romantis (bisa diganti foto asli nanti)
+  tagline: "ini cerita kita — apa adanya, dari kopi pertama sampai sekarang.",
+  subTagline: "dirangkum dalam satu jurnal digital, supaya kita selalu ingat dari mana semuanya dimulai.",
+  // Foto placeholder berkualitas tinggi — ganti dengan foto asli di `public/images/hero.jpg`
   heroPhoto: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=1200&auto=format&fit=crop",
   heroPhotoCaption: "Arya & Nadina — 2 November 2025",
 };

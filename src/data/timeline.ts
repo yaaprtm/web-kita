@@ -2,27 +2,23 @@ import { TimelineMoment } from '@/types';
 
 /**
  * ====================================================================
- * DATA TIMELINE PERJALANAN HUBUNGAN ARYA & NADINA
+ * DATA TIMELINE PERJALANAN HUBUNGAN (ARYA & NADINA)
  * ====================================================================
- * Setiap cerita ditulis dalam bentuk narasi hangat 3-5 kalimat.
- * 
- * CARA MENGGANTI FOTO TIMELINE:
- * Simpan foto di `public/images/timeline-1.jpg`, `timeline-2.jpg`, dst.
- * Lalu ganti `photoUrl` di bawah menjadi `/images/timeline-1.jpg`.
+ * Bahasa disesuaikan dengan gaya jurnal scrapbook (santai, hangat, "kita").
  * ====================================================================
  */
 export const timelineData: TimelineMoment[] = [
   {
     id: 'momen-1',
     order: 1,
-    title: 'Pertama Kali Bertemu',
+    title: 'Pertama Kali Ketemu',
     dateStr: 'Akhir September 2025',
     location: 'Warkop Cakasa',
-    badge: 'Takdir Yang Tak Terduga',
-    story: 'Semua bermula di suatu malam di akhir September 2025, saat Arya yang sedang berkumpul di rumah teman diajak nongkrong ngopi di Warkop Cakasa. Di tempat yang sederhana itu, untuk pertama kalinya mata Arya dan Nadina saling bertemu secara tidak sengaja. Sebuah sapaan kecil malam itu menjadi pemicu takdir manis yang mengubah hari-hari mereka selanjutnya.',
+    badge: 'Malam Tak Terduga',
+    story: 'Semua berawal di suatu malam di akhir September 2025. Arya lagi nongkrong di rumah teman, lalu diajak ngopi ke Warkop Cakasa. Di sana, secara nggak sengaja kita pertama kali ketemu dan sapa-sapaan kecil. Siapa sangka, dari secangkir kopi malam itu, cerita kita dimulai.',
     photoUrl: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1000&auto=format&fit=crop',
-    photoCaption: 'Awal mula cerita dari secangkir kopi di Warkop Cakasa',
-    highlights: ['Warkop Cakasa', 'Malam tak terduga', 'Secangkir Kopi Pertama']
+    photoCaption: 'Awal mula semuanya di Warkop Cakasa ☕',
+    highlights: ['Warkop Cakasa', 'Malam Tak Terduga', 'Kopi Pertama']
   },
   {
     id: 'momen-2',
@@ -30,22 +26,22 @@ export const timelineData: TimelineMoment[] = [
     title: 'Hari-Hari Sebelum Jadian',
     dateStr: 'Akhir September - Oktober 2025',
     location: 'Kampus & Hood Cipinang',
-    badge: 'Benih Cinta Tumbuh',
-    story: 'Sejak pertemuan di Warkop Cakasa, kebersamaan mereka semakin intens. Arya dengan senang hati sering mengantar dan menjemput Nadina ke dan dari kampus, di mana perjalanan tersebut hampir selalu diselingi singgah ngopi hangat di Hood Cipinang. Dari obrolan acak, gelak tawa, hingga kebiasaan-kebiasaan kecil selama perjalanan itu, perlahan benih rasa cinta dan kasih sayang mulai bersemi makin dalam.',
+    badge: 'Rutinitas Manis',
+    story: 'Sejak malam itu, kita makin sering ngobrol. Arya rajin antar-jemput Nadina ke kampus, dan hampir selalu mampir ngopi dulu di Hood Cipinang. Dari kebiasaan-kebiasaan kecil dan obrolan random sepulang kampus itu, rasa sayang pelan-pelan tumbuh di antara kita berdua.',
     photoUrl: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1000&auto=format&fit=crop',
-    photoCaption: 'Setiap sudut Cipinang menyimpan hangat obrolan kita',
-    highlights: ['Antar Jemput Kampus', 'Hood Cipinang', 'Obrolan Tanpa Akhir']
+    photoCaption: 'Hood Cipinang, tempat ngopi favorit sepulang kampus 🍵',
+    highlights: ['Antar Jemput Kampus', 'Hood Cipinang', 'Obrolan Random']
   },
   {
     id: 'momen-3',
     order: 3,
-    title: 'Perjalanan ke Puncak & Menjadi Sepasang Kekasih',
+    title: 'Jalan ke Puncak & Resmi Berpasangan',
     dateStr: '1 - 2 November 2025',
     location: 'Depok, Puncak & Jalan Raya Bogor',
-    badge: 'Resmi Sepasang Kekasih',
-    story: 'Perjalanan berkesan dimulai pada 1 November sore saat Arya mengajak Nadina ke Puncak dengan niat tersembunyi untuk menyatakan perasaan. Di perjalanan, hujan deras memaksa mereka berteduh di sebuah Indomaret di Depok — momen teduh yang justru menjadi sangat intim ketika Nadina membuka hati menceritakan banyak hal tentang keluarganya. Perjalanan berlanjut hingga malam; mereka menyantap bakso hangat pinggir jalan di depan Gunung Mas karena kelaparan, lalu menikmati kopi di Green Coffee. Saat perjalanan pulang yang dingin, Nadina ganti mengendarai motor dan mereka sempat berhenti di warung jamu membeli minuman Kawa-Kawa Black Currant hangat untuk menepis dinginnya angin malam. Hingga akhirnya, di sepanjang Jalan Raya Bogor pada tanggal 2 November 2025, Arya memberanikan diri menyatakan perasaannya — dan Nadina menerima dengan senyuman hangat, resmi menjadi sepasang kekasih.',
+    badge: 'Resmi Jadian! 💖',
+    story: 'Tanggal 1 November sore, Arya ngajak jalan ke Puncak dengan niat tersembunyi. Di jalan sempat hujan deras dan kita berteduh di Indomaret Depok — momen teduh yang hangat karena Nadina banyak cerita tentang keluarganya. Malamnya kita makan bakso Gunung Mas karena kelaparan, lalu ngopi di Green Coffee. Pas perjalanan pulang yang dingin, Nadina yang ganti bawa motor dan kita sempat beli Kawa-Kawa di warung jamu buat menghangatkan badan. Akhirnya di Jalan Raya Bogor, Arya memberanikan diri nembak Nadina — dan resmi jadian 2 November 2025!',
     photoUrl: 'https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?q=80&w=1000&auto=format&fit=crop',
-    photoCaption: 'Di dinginnya malam Puncak dan hangatnya Jalan Raya Bogor, cinta kita berlabuh',
+    photoCaption: 'Depok, Puncak, dan momen manis di Jalan Raya Bogor 💍',
     highlights: ['Berteduh di Depok', 'Bakso Gunung Mas', 'Kawa-kawa Warung Jamu', 'Jalan Raya Bogor 2 Nov 2025']
   }
 ];
