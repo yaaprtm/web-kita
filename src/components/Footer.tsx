@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Heart, Sparkles, ArrowUp } from 'lucide-react';
+import { Heart, Sparkles, ArrowUp, Gift } from 'lucide-react';
+import Link from 'next/link';
 import { coupleData } from '@/data/couple';
 
 export const Footer: React.FC = () => {
@@ -32,10 +33,19 @@ export const Footer: React.FC = () => {
         </p>
 
         {/* Anniversary Badge */}
-        <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold uppercase tracking-widest text-rosegold-light mb-10">
+        <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold uppercase tracking-widest text-rosegold-light mb-6">
           <Sparkles size={14} className="text-rosegold-gold" />
           <span>Resmi Berpasangan • 2 November 2025</span>
         </div>
+
+        {/* Anniversary Page Link */}
+        <Link
+          href="/anniversary"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-blush-500/20 border border-blush-400/30 hover:border-blush-400/60 text-blush-300 hover:text-white text-sm font-medium transition-all duration-200 mb-10 group"
+        >
+          <Gift size={15} className="group-hover:animate-bounce" />
+          <span>Kejutan Anniversary Pertama 🎁</span>
+        </Link>
 
         {/* Divider */}
         <div className="w-full max-w-xs h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-8" />

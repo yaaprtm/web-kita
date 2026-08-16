@@ -3,6 +3,7 @@ import { Navbar } from '@/components/Navbar';
 import { BackgroundDecorations } from '@/components/BackgroundDecorations';
 import { Hero } from '@/components/Hero';
 import { Timeline } from '@/components/Timeline';
+import { LoveMap } from '@/components/LoveMap';
 import { Gallery } from '@/components/Gallery';
 import { Guestbook } from '@/components/Guestbook';
 import { Footer } from '@/components/Footer';
@@ -22,13 +23,16 @@ export default function Home() {
       {/* Section 2: Narrative Timeline */}
       <Timeline />
 
-      {/* Section 3: Photo Gallery & Lightbox Modal */}
+      {/* Section 3: Interactive Love Journey Map */}
+      <LoveMap />
+
+      {/* Section 4: Photo Gallery & Lightbox Modal */}
       <Gallery />
 
-      {/* Section 4: Guest Book & Message Wall */}
+      {/* Section 5: Guest Book & Message Wall */}
       <Guestbook />
 
-      {/* Section 5: Romantic Footer */}
+      {/* Section 6: Romantic Footer */}
       <Footer />
     </main>
   );

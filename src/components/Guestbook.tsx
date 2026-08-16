@@ -11,7 +11,7 @@ const INITIAL_MESSAGES: GuestBookMessage[] = [
     id: 'msg-1',
     name: 'Budi & Maya',
     relation: 'Sahabat Arya',
-    message: 'Selamat buat Arya dan Nadina! Dari zaman nongkrong di Warkop Cakasa sampai Puncak, luar biasa banget ngerasain perjalanan kalian. Langgeng dan bahagia terus ya!',
+    message: 'Semangat dan bahagia terus buat Arya dan Nadina! Dari zaman nongkrong di Warkop Cakasa sampai Puncak, luar biasa banget ngerasain perjalanan kalian. Langgeng terus ya!',
     createdAt: '2 November 2025',
     likes: 12,
     badgeEmoji: '🥂',
@@ -20,7 +20,7 @@ const INITIAL_MESSAGES: GuestBookMessage[] = [
     id: 'msg-2',
     name: 'Siti Rahma',
     relation: 'Teman Kampus Nadina',
-    message: 'Nadinaaa, terharu banget liat cerita perjalanan kalian! Dulu pas sering dijemput terus diajak ngopi ke Hood Cipinang seneng banget denger ceritanya. Bahagia selalu berdua!',
+    message: 'Nadinaaa, senang banget liat cerita perjalanan kalian! Dulu pas sering dijemput terus diajak ngopi ke Hood Cipinang gemes banget denger ceritanya. Bahagia selalu berdua!',
     createdAt: '5 November 2025',
     likes: 9,
     badgeEmoji: '💖',
@@ -29,7 +29,7 @@ const INITIAL_MESSAGES: GuestBookMessage[] = [
     id: 'msg-3',
     name: 'Rian & Tim Hood',
     relation: 'Teman Nongkrong',
-    message: 'Doa terbaik untuk Arya dan Nadina! Semoga hubungannya makin hangat, makin solid, dan selalu diberi keberkahan dalam tiap langkah. Cheers! 🎉',
+    message: 'Support selalu untuk Arya dan Nadina! Semoga hubungannya makin hangat, makin solid, dan selalu diberi kebahagiaan. Cheers! 🎉',
     createdAt: '10 November 2025',
     likes: 15,
     badgeEmoji: '✨',
@@ -39,7 +39,7 @@ const INITIAL_MESSAGES: GuestBookMessage[] = [
 export const Guestbook: React.FC = () => {
   const [messages, setMessages] = useState<GuestBookMessage[]>([]);
   const [name, setName] = useState('');
-  const [relation, setRelation] = useState('Teman');
+  const [relation, setRelation] = useState('Sahabat');
   const [message, setMessage] = useState('');
   const [selectedEmoji, setSelectedEmoji] = useState('💖');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -125,13 +125,13 @@ export const Guestbook: React.FC = () => {
         <div className="text-center mb-14">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blush-100/80 border border-blush-200 text-blush-500 text-xs font-semibold uppercase tracking-widest mb-3">
             <MessageSquare size={14} className="text-rosegold-gold" />
-            <span>Buku Tamu & Ucapan</span>
+            <span>PESAN UNTUK KAMI</span>
           </div>
           <h2 className="font-serif text-3xl md:text-5xl font-bold text-warm-900 mb-4">
-            Doa & Ucapan Teman-Teman
+            Kirim Pesan untuk Arya & Nadina
           </h2>
           <p className="font-serif italic text-warm-700 text-base md:text-lg max-w-xl mx-auto">
-            Tinggalkan pesan dan ucapan terbaik Anda untuk Arya & Nadina dalam merayakan kebahagiaan mereka.
+            Punya kesan, dukungan, atau sekadar mau bilang halo? Tinggalkan pesanmu di sini untuk kami berdua.
           </p>
         </div>
 
@@ -141,16 +141,16 @@ export const Guestbook: React.FC = () => {
           <div className="lg:col-span-5 bg-white/95 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-blush-100 shadow-card-warm">
             <h3 className="font-serif text-xl font-bold text-warm-900 mb-2 flex items-center gap-2">
               <Sparkles size={18} className="text-rosegold-gold" />
-              <span>Kirim Ucapan Warm</span>
+              <span>Tulis Pesanmu</span>
             </h3>
             <p className="text-xs text-warm-700 mb-6 font-light">
-              Pesan Anda akan tampil di dinding ucapan di sebelah kanan.
+              Pesanmu akan tampil di dinding pesan di sebelah kanan.
             </p>
 
             {submittedSuccess && (
               <div className="mb-6 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-center gap-2 animate-fadeIn">
                 <CheckCircle2 size={18} className="text-emerald-600 shrink-0" />
-                <span>Terima kasih! Ucapan manis Anda telah berhasil dipublikasikan! ❤️</span>
+                <span>Terima kasih! Pesanmu telah berhasil terkirim! ❤️</span>
               </div>
             )}
 
@@ -180,7 +180,7 @@ export const Guestbook: React.FC = () => {
                   type="text"
                   value={relation}
                   onChange={(e) => setRelation(e.target.value)}
-                  placeholder="Contoh: Sahabat Arya / Teman Nadina"
+                  placeholder="Contoh: Sahabat, Teman Kuliah, Teman Nongkrong"
                   className="w-full px-4 py-2.5 rounded-xl border border-blush-200 bg-ivory-50 text-sm text-warm-900 focus:outline-none focus:ring-2 focus:ring-blush-300 focus:bg-white transition-all"
                 />
               </div>
@@ -216,14 +216,14 @@ export const Guestbook: React.FC = () => {
                   rows={4}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Tulis ucapan dan doa terbaik Anda di sini..."
+                  placeholder="Tulis kesan, dukungan, atau pesan manis untuk Arya & Nadina..."
                   className="w-full p-3.5 rounded-xl border border-blush-200 bg-ivory-50 text-sm text-warm-900 focus:outline-none focus:ring-2 focus:ring-blush-300 focus:bg-white transition-all resize-none"
                 />
               </div>
 
               {/* Quick Presets */}
               <div>
-                <span className="block text-[11px] text-warm-700 mb-1.5">Preset Ucapan Cepat:</span>
+                <span className="block text-[11px] text-warm-700 mb-1.5">Preset Pesan Cepat:</span>
                 <div className="flex flex-wrap gap-1.5">
                   {[
                     'Bahagia selamanya! 💖',
@@ -248,7 +248,7 @@ export const Guestbook: React.FC = () => {
                 className="mt-2 w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-blush-400 via-blush-500 to-rosegold-gold text-white font-medium text-sm shadow-md hover:shadow-rose-glow hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 disabled:opacity-50"
               >
                 <Send size={16} />
-                <span>Kirim Ucapan Manis</span>
+                <span>Kirim Pesan Manis</span>
               </button>
             </form>
           </div>
@@ -257,7 +257,7 @@ export const Guestbook: React.FC = () => {
           <div className="lg:col-span-7 flex flex-col gap-4 max-h-[650px] overflow-y-auto pr-1 custom-scrollbar">
             <div className="flex items-center justify-between px-2 mb-1">
               <span className="text-xs font-semibold text-warm-900 uppercase tracking-wider">
-                Dinding Ucapan ({messages.length} Ucapan)
+                PESAN DARI KALIAN ({messages.length} PESAN)
               </span>
               
               <button

@@ -41,3 +41,16 @@ export interface GuestBookMessage {
   likes: number;
   badgeEmoji?: string;
 }
+
+export interface MapLocation {
+  id: string;
+  order: number;
+  name: string;
+  area: string;
+  emoji: string;
+  date: string;
+  story: string;
+  color: 'blush' | 'rosegold' | 'warm' | 'gold';
+  cx: number; // SVG x coordinate (0-100)
+  cy: number; // SVG y coordinate (0-100)
+}

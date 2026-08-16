@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Heart, Menu, X } from 'lucide-react';
+import { Heart, Menu, X, Gift } from 'lucide-react';
+import Link from 'next/link';
 import { coupleData } from '@/data/couple';
 
 export const Navbar: React.FC = () => {
@@ -22,10 +23,10 @@ export const Navbar: React.FC = () => {
 
   const navLinks = [
     { name: 'Beranda', href: '#hero' },
-    { name: 'Hari Bersama', href: '#counter' },
     { name: 'Cerita Kita', href: '#timeline' },
+    { name: 'Peta', href: '#lovemap' },
     { name: 'Galeri', href: '#gallery' },
-    { name: 'Ucapan', href: '#guestbook' },
+    { name: 'Pesan', href: '#guestbook' },
   ];
 
   return (
@@ -48,7 +49,7 @@ export const Navbar: React.FC = () => {
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -59,6 +60,14 @@ export const Navbar: React.FC = () => {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blush-300 to-rosegold-gold transition-all duration-300 group-hover:w-full rounded-full" />
             </a>
           ))}
+          {/* Anniversary Surprise Button */}
+          <Link
+            href="/anniversary"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-blush-400 to-rosegold-gold text-white text-xs font-semibold shadow-sm hover:shadow-rose-glow hover:scale-105 transition-all duration-200"
+          >
+            <Gift size={13} />
+            <span>Kejutan 🎁</span>
+          </Link>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -86,6 +95,15 @@ export const Navbar: React.FC = () => {
                 <Heart size={14} className="text-blush-300 opacity-60" />
               </a>
             ))}
+            {/* Anniversary mobile link */}
+            <Link
+              href="/anniversary"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-2 py-2 text-base font-semibold text-blush-500"
+            >
+              <Gift size={16} />
+              <span>Kejutan Anniversary 🎁</span>
+            </Link>
           </div>
         </div>
       )}
