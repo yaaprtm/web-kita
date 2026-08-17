@@ -19,16 +19,16 @@ export const galleryPhotos: GalleryPhoto[] = [
     date: 'September 2025',
     location: 'Warkop Cakasa',
     category: 'memory',
-    url: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop',
+    url: '/images/gallery/photo1.jpg',
   },
   {
     id: 'gal-2',
     title: 'Kopi & Cerita di Hood',
-    caption: 'Singgah favorit sepulang kampus. Obrolan hangat dari kopi yang masih mengepul.',
-    date: 'Oktober 2025',
+    caption: 'Singgah favorit. Obrolan hangat dari kopi yang masih mengepul.',
+    date: 'Unknown',
     location: 'Hood Cipinang',
     category: 'date',
-    url: 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=800&auto=format&fit=crop',
+    url: '/images/gallery/photo2.jpg',
   },
   {
     id: 'gal-3',
@@ -37,7 +37,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     date: '1 November 2025',
     location: 'Depok',
     category: 'trip',
-    url: 'https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?q=80&w=800&auto=format&fit=crop',
+    url: '/images/gallery/photo3.jpg',
   },
   {
     id: 'gal-4',
@@ -46,7 +46,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     date: '1 November 2025',
     location: 'Gunung Mas, Puncak',
     category: 'trip',
-    url: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=800&auto=format&fit=crop',
+    url: '/images/gallery/photo4.jpg',
   },
   {
     id: 'gal-5',
@@ -55,7 +55,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     date: '1 November 2025',
     location: 'Green Coffee Puncak',
     category: 'memory',
-    url: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=800&auto=format&fit=crop',
+    url: '/images/gallery/photo5.jpg',
   },
   {
     id: 'gal-6',
