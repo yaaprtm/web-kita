@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
-import { Camera, Eye, Info, Sparkles } from 'lucide-react';
+import { Camera, Eye, Info } from 'lucide-react';
 import { galleryPhotos } from '@/data/gallery';
 import { GalleryPhoto } from '@/types';
 import { LightboxModal } from './LightboxModal';
@@ -29,6 +29,7 @@ const PolaroidCard: React.FC<PolaroidCardProps> = ({ photo, idx, onSelect }) => 
   const [isFlipped, setIsFlipped] = useState(false);
   const rotation = PRESET_ROTATIONS[idx % PRESET_ROTATIONS.length];
   const tapeColor = WASHI_COLORS[idx % WASHI_COLORS.length];
+  const isVideo = photo.type === 'video';
 
   // Motion values for 3D tilt effect on hover
   const x = useMotionValue(0);
@@ -59,19 +60,19 @@ const PolaroidCard: React.FC<PolaroidCardProps> = ({ photo, idx, onSelect }) => 
   };
 
   return (
-    <div className="perspective-1000 w-full min-h-[380px] select-none">
+    <div className="perspective-1000 w-full h-auto select-none">
       <motion.div
         drag
-        dragConstraints={{ left: -40, right: 40, top: -40, bottom: 40 }}
+        dragConstraints={{ left: -30, right: 30, top: -30, bottom: 30 }}
         dragSnapToOrigin={true}
-        whileDrag={{ scale: 1.05, zIndex: 40 }}
+        whileDrag={{ scale: 1.04, zIndex: 40 }}
         initial={{ rotate: rotation }}
         whileHover={{ scale: 1.03, rotate: 0, zIndex: 30 }}
         style={{ rotateX, rotateY, perspective: 1000 }}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         onClick={handleCardClick}
-        className="w-full h-full relative cursor-pointer group"
+        className="w-full relative cursor-pointer group"
       >
         {/* Washi Tape Strip */}
         <WashiTape
@@ -84,31 +85,74 @@ const PolaroidCard: React.FC<PolaroidCardProps> = ({ photo, idx, onSelect }) => 
 
         {/* 3D Flip Inner Container */}
         <div
-          className={`w-full h-full transition-transform duration-700 [transform-style:preserve-3d] relative ${
+          className={`w-full transition-transform duration-700 [transform-style:preserve-3d] relative ${
             isFlipped ? '[transform:rotateY(180deg)]' : ''
           }`}
         >
           {/* FRONT SIDE */}
-          <div className="polaroid w-full h-full [backface-visibility:hidden] flex flex-col justify-between">
-            {/* Image container */}
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xs bg-warm-900 group">
-              <Image
-                src={photo.url}
-                alt={photo.title}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              />
+          <div className="polaroid w-full [backface-visibility:hidden] flex flex-col p-3.5 pb-4 rounded-xl bg-white shadow-card-warm border border-warm-200">
+            {/* Media container (Aspect-Square 1:1 for perfect consistency) */}
+            <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-warm-900 group">
+              {isVideo ? (
+                <>
+                  {/* Video thumbnail / poster */}
+                  {photo.poster ? (
+                    <Image
+                      src={photo.poster}
+                      alt={photo.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  ) : (
+                    <video
+                      src={photo.url}
+                      muted
+                      playsInline
+                      preload="metadata"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  )}
 
-              {/* Hover overlay badge / Zoom trigger */}
-              <div className="absolute inset-0 bg-warm-900/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <button
-                  onClick={handleZoomClick}
-                  className="px-3 py-1.5 rounded-full bg-white/95 text-warm-900 font-hand text-sm font-bold shadow-md hover:bg-white flex items-center gap-1.5"
-                >
-                  <Eye size={15} /> Perbesar Foto
-                </button>
-              </div>
+                  {/* Centered Play Icon Overlay for Videos */}
+                  <div className="absolute inset-0 bg-warm-900/30 flex items-center justify-center">
+                    <button
+                      onClick={handleZoomClick}
+                      className="w-12 h-12 rounded-full bg-white/95 text-dusty-rose flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-white transition-all duration-300 border-2 border-white/80"
+                      aria-label="Putar Video"
+                    >
+                      <svg className="w-6 h-6 fill-current ml-0.5" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </button>
+                  </div>
+
+                  {/* Top-right Video Badge */}
+                  <span className="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-warm-900/80 text-ivory-50 text-[10px] font-hand font-bold tracking-wide flex items-center gap-1 backdrop-blur-xs">
+                    🎬 Video Klip
+                  </span>
+                </>
+              ) : (
+                <Image
+                  src={photo.url}
+                  alt={photo.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+              )}
+
+              {/* Hover overlay badge for photo zoom */}
+              {!isVideo && (
+                <div className="absolute inset-0 bg-warm-900/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <button
+                    onClick={handleZoomClick}
+                    className="px-3.5 py-1.5 rounded-full bg-white/95 text-warm-900 font-hand text-sm font-bold shadow-md hover:bg-white flex items-center gap-1.5"
+                  >
+                    <Eye size={15} /> Perbesar Foto
+                  </button>
+                </div>
+              )}
             </div>
 
             {/* Polaroid bottom caption */}
@@ -116,21 +160,21 @@ const PolaroidCard: React.FC<PolaroidCardProps> = ({ photo, idx, onSelect }) => 
               <p className="font-hand text-xl font-bold text-warm-900 leading-tight">
                 {photo.title}
               </p>
-              <p className="font-hand text-xs text-warm-700 mt-0.5">
+              <p className="font-hand text-xs text-warm-700 mt-1">
                 {photo.date} • {photo.location}
               </p>
-              <span className="mt-2.5 inline-flex items-center gap-1 text-[11px] font-hand text-dusty-rose bg-dusty-light/60 px-2.5 py-0.5 rounded-full border border-dusty-pink/30 shadow-xs">
-                🔄 Tap/Klik buat balik foto
+              <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-hand text-dusty-rose bg-dusty-light/60 px-2.5 py-0.5 rounded-full border border-dusty-pink/30 shadow-xs">
+                {isVideo ? '▶ Tap untuk putar / 🔄 Balik' : '🔄 Tap/Klik buat balik foto'}
               </span>
             </div>
           </div>
 
           {/* BACK SIDE */}
-          <div className="polaroid w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] absolute inset-0 bg-ivory-100 border-2 border-dashed border-warm-300 p-5 flex flex-col justify-between text-left">
+          <div className="polaroid w-full h-full min-h-[300px] [backface-visibility:hidden] [transform:rotateY(180deg)] absolute inset-0 bg-ivory-100 border-2 border-dashed border-warm-300 p-5 rounded-xl flex flex-col justify-between text-left">
             <div>
               <div className="flex items-center justify-between border-b border-warm-200 pb-2 mb-3">
                 <span className="font-hand text-xs font-bold uppercase tracking-wider text-dusty-rose">
-                  📝 Catatan Balik Foto
+                  📝 Catatan Balik {isVideo ? 'Video' : 'Foto'}
                 </span>
                 <span className="font-hand text-xs text-warm-600">{photo.date}</span>
               </div>
@@ -148,7 +192,7 @@ const PolaroidCard: React.FC<PolaroidCardProps> = ({ photo, idx, onSelect }) => 
                   onClick={handleZoomClick}
                   className="px-3 py-1 rounded-full bg-dusty-pink/20 hover:bg-dusty-pink/40 text-warm-900 font-hand text-xs font-bold transition-colors flex items-center gap-1 border border-dusty-pink/30"
                 >
-                  <Eye size={13} /> Fullscreen
+                  <Eye size={13} /> {isVideo ? 'Putar Video' : 'Fullscreen'}
                 </button>
               </div>
               <div className="text-center mt-2">
@@ -180,12 +224,12 @@ export const Gallery: React.FC = () => {
           <SectionLabel color="bg-mustard-100">📷 foto NAYA</SectionLabel>
           
           <h2 className="font-hand text-4xl md:text-6xl font-bold text-warm-900 mt-3 mb-2">
-            Galeri Foto NAYA
+            Galeri Foto & Video NAYA
           </h2>
           <DoodleUnderline className="text-dusty-pink mx-auto mb-3" width={220} />
           
           <p className="font-hand text-xl text-warm-700 max-w-lg mx-auto italic">
-            Koleksi foto polaroid NAYA. Tap/Klik fotonya buat balik dan baca catatan di belakangnya!
+            Koleksi foto polaroid & klip kenangan NAYA. Tap/Klik buat balik foto atau klik tombol Play untuk memutar video!
           </p>
 
           <DoodleStar className="absolute top-2 left-12 text-dusty-pink opacity-50" size={26} />
@@ -207,7 +251,7 @@ export const Gallery: React.FC = () => {
         <div className="mt-12 p-4 rounded-2xl bg-white border border-warm-200 shadow-sm max-w-xl mx-auto flex items-start gap-3 text-xs text-warm-800">
           <Info size={18} className="text-dusty-rose shrink-0 mt-0.5" />
           <div>
-            <span className="font-semibold text-warm-900">Tips Scrapbook:</span> Tap/Klik foto polaroid untuk **membalik foto** dan membaca pesan rahasia di baliknya. Kamu juga bisa menggeser (drag) foto pakai mouse/sentuhan HP!
+            <span className="font-semibold text-warm-900">Tips Scrapbook:</span> Tap/Klik foto polaroid untuk **membalik foto** dan membaca pesan rahasia di baliknya. Untuk kartu video 🎬, klik ikon Play atau tombol &quot;Putar Video&quot; untuk menonton video dengan suara!
           </div>
         </div>
 

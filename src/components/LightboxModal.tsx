@@ -75,16 +75,29 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({
       {/* Main Lightbox Content Card */}
       <div className="max-w-4xl w-full bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row border-2 border-warm-200 max-h-[90vh]">
         
-        {/* Photo Container */}
-        <div className="relative w-full md:w-2/3 aspect-square md:aspect-auto min-h-[300px] md:min-h-[480px] bg-warm-900">
-          <Image
-            src={photo.url}
-            alt={photo.title}
-            fill
-            className="object-contain"
-            priority
-            sizes="(max-width: 768px) 100vw, 800px"
-          />
+        {/* Photo / Video Container */}
+        <div className="relative w-full md:w-2/3 aspect-square md:aspect-auto min-h-[300px] md:min-h-[480px] bg-warm-900 flex items-center justify-center overflow-hidden">
+          {photo.type === 'video' ? (
+            <video
+              key={photo.id}
+              src={photo.url}
+              poster={photo.poster}
+              controls
+              autoPlay
+              loop
+              playsInline
+              className="w-full h-full object-contain max-h-[80vh]"
+            />
+          ) : (
+            <Image
+              src={photo.url}
+              alt={photo.title}
+              fill
+              className="object-contain"
+              priority
+              sizes="(max-width: 768px) 100vw, 800px"
+            />
+          )}
         </div>
 
         {/* Details Sidebar */}

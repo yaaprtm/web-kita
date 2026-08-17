@@ -24,12 +24,14 @@ export interface TimelineMoment {
 
 export interface GalleryPhoto {
   id: string;
+  type?: 'photo' | 'video';
   title: string;
   caption: string;
   backNote?: string;
   date: string;
   location: string;
   url: string;
+  poster?: string;
   category?: 'memory' | 'date' | 'trip' | 'candid';
 }
 
