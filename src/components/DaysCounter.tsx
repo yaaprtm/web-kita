@@ -57,15 +57,15 @@ export const DaysCounter: React.FC = () => {
         <div className="absolute -top-4 left-1/2 -translate-x-1/2">
           <div className="tape-strip text-sm font-hand text-warm-800 flex items-center gap-1.5">
             <Calendar size={13} className="text-dusty-rose" />
-            jadian sejak 2 November 2025
+            NAYA resmi jadian 2 November 2025
           </div>
         </div>
 
         <h3 className="font-hand text-2xl md:text-3xl font-bold text-warm-900 mb-1 mt-2">
-          sudah bareng selama...
+          udah bareng-bareng selama...
         </h3>
-        <p className="font-sans text-sm text-warm-700 mb-6">
-          total <span className="font-semibold text-dusty-rose">{duration.totalDays} hari</span> penuh cerita dan tawa 🧡
+        <p className="font-sans text-sm text-warm-700 mb-6 font-light">
+          total <span className="font-semibold text-dusty-rose">{duration.totalDays} hari</span> penuh obrolan random &amp; momen seru 🧡
         </p>
 
         {/* Counter boxes — scrapbook stamp style */}
@@ -86,7 +86,7 @@ export const DaysCounter: React.FC = () => {
         </div>
 
         <p className="font-hand text-sm text-warm-600 opacity-70">
-          ⏱️ update tiap detik
+          ⏱️ jalannya detik demi detik
         </p>
       </div>
     </div>

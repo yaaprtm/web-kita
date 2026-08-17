@@ -119,15 +119,15 @@ export const Gallery: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center mb-14 relative">
-          <SectionLabel color="bg-mustard-100">📷 kenangan manis</SectionLabel>
+          <SectionLabel color="bg-mustard-100">📷 foto NAYA</SectionLabel>
           
           <h2 className="font-hand text-4xl md:text-6xl font-bold text-warm-900 mt-3 mb-2">
-            Galeri Foto Kenangan
+            Galeri Foto NAYA
           </h2>
           <DoodleUnderline className="text-dusty-pink mx-auto mb-3" width={220} />
           
           <p className="font-hand text-xl text-warm-700 max-w-lg mx-auto italic">
-            foto-foto polaroid kita. coba geser/drag fotonya atau klik untuk buka detailnya!
+            Koleksi foto polaroid NAYA. Coba deh geser-geser fotonya atau klik buat liat detailnya!
           </p>
 
           <DoodleStar className="absolute top-2 left-12 text-dusty-pink opacity-50" size={26} />
@@ -149,7 +149,7 @@ export const Gallery: React.FC = () => {
         <div className="mt-12 p-4 rounded-2xl bg-white border border-warm-200 shadow-sm max-w-xl mx-auto flex items-start gap-3 text-xs text-warm-800">
           <Info size={18} className="text-dusty-rose shrink-0 mt-0.5" />
           <div>
-            <span className="font-semibold text-warm-900">Tips Scrapbook:</span> Foto polaroid di atas bisa kamu **drag/geser** pakai mouse atau sentuhan HP! Klik foto untuk memperbesar dan melihat cerita lengkapnya.
+            <span className="font-semibold text-warm-900">Tips Seru:</span> Foto polaroid NAYA di atas bisa kamu **geser-geser (drag)** pake mouse atau jari kamu! Klik fotonya buat liat cerita lengkapnya.
           </div>
         </div>
 

@@ -14,8 +14,8 @@ import { GalleryPhoto } from '@/types';
 export const galleryPhotos: GalleryPhoto[] = [
   {
     id: 'gal-1',
-    title: 'Nongkrong Malam Pertama',
-    caption: 'Malam saat semuanya dimulai dari senyuman tidak sengaja di Warkop Cakasa.',
+    title: 'Awal Mula Ketemu',
+    caption: 'Malam pertama kali nyapa di Warkop Cakasa. Senyumnya masih kebayang!',
     date: 'September 2025',
     location: 'Warkop Cakasa',
     category: 'memory',
@@ -23,8 +23,8 @@ export const galleryPhotos: GalleryPhoto[] = [
   },
   {
     id: 'gal-2',
-    title: 'Kopi & Cerita di Hood',
-    caption: 'Singgah favorit. Obrolan hangat dari kopi yang masih mengepul.',
+    title: 'Rutinitas Ngopi Hood',
+    caption: 'Spot favorit abis jemput ngampus. Ngobrol apa aja dari A sampe Z.',
     date: 'Unknown',
     location: 'Hood Cipinang',
     category: 'date',
@@ -32,8 +32,8 @@ export const galleryPhotos: GalleryPhoto[] = [
   },
   {
     id: 'gal-3',
-    title: 'Teduh Saat Hujan Hujanan',
-    caption: 'Berteduh di Depok saat hujan deras menuju Puncak. Saat-saat obrolan paling hangat.',
+    title: 'Kehujanan di Depok',
+    caption: 'Pas neduh di Indomaret Depok gara-gara hujan deres OTW Puncak.',
     date: '1 November 2025',
     location: 'Depok',
     category: 'trip',
@@ -41,8 +41,8 @@ export const galleryPhotos: GalleryPhoto[] = [
   },
   {
     id: 'gal-4',
-    title: 'Bakso Pinggir Jalan Gunung Mas',
-    caption: 'Kelaparan di tengah malam Puncak dan semangkuk bakso paling nikmat.',
+    title: 'Bakso Malam Puncak',
+    caption: 'Kelaparan di jalan, semangkuk bakso Puncak ini rasanya mantap banget.',
     date: '1 November 2025',
     location: 'Gunung Mas, Puncak',
     category: 'trip',
@@ -50,8 +50,8 @@ export const galleryPhotos: GalleryPhoto[] = [
   },
   {
     id: 'gal-5',
-    title: 'Singgah di Green Coffee',
-    caption: 'Kopi hangat penembus dinginnya Puncak yang kini tinggal kenangan manis.',
+    title: 'Ngopi di Green Coffee',
+    caption: 'Ngopi dingin-dingin di Green Coffee Puncak. Sayang sekarang tempatnya udah tutup.',
     date: '1 November 2025',
     location: 'Green Coffee Puncak',
     category: 'memory',
@@ -59,8 +59,8 @@ export const galleryPhotos: GalleryPhoto[] = [
   },
   {
     id: 'gal-6',
-    title: 'Menembus Angin Malam',
-    caption: 'Nadina di balik stang motor, menembus dingin malam dengan senyuman bahagia.',
+    title: 'Nadina Bawa Motor',
+    caption: 'Momen Nadina gantian bawa motor pas jalan balik yang super dingin.',
     date: '2 November 2025',
     location: 'Perjalanan Pulang Puncak',
     category: 'candid',
@@ -68,8 +68,8 @@ export const galleryPhotos: GalleryPhoto[] = [
   },
   {
     id: 'gal-7',
-    title: 'Penghangat Kawa-Kawa',
-    caption: 'Berhenti sebentar di warung jamu membeli Kawa-Kawa Black Currant penghangat tubuh.',
+    title: 'Mampir Warung Jamu',
+    caption: 'Beli Kawa-Kawa Black Currant di warung jamu pinggir jalan biar gak masuk angin.',
     date: '2 November 2025',
     location: 'Warung Jamu Pinggir Jalan',
     category: 'memory',
@@ -77,8 +77,8 @@ export const galleryPhotos: GalleryPhoto[] = [
   },
   {
     id: 'gal-8',
-    title: 'Jalan Raya Bogor 2 Nov',
-    caption: 'Momen berharga di mana Arya menyatakan perasaan dan Nadina membalas dengan ya.',
+    title: 'Momen Pas Nembak',
+    caption: 'Jalan Raya Bogor tempat Arya nembak dan Nadina jawab mau!',
     date: '2 November 2025',
     location: 'Jalan Raya Bogor',
     category: 'date',
@@ -86,8 +86,8 @@ export const galleryPhotos: GalleryPhoto[] = [
   },
   {
     id: 'gal-9',
-    title: 'Bahagia Bersama',
-    caption: 'Awal dari langkah manis yang akan kita arungi bersama selamanya.',
+    title: 'NAYA Berdua',
+    caption: 'Perjalanan NAYA yang baru dimulai. Pokoknya jalanin terus bareng-bareng!',
     date: '2025 - Sekarang',
     location: 'Bersama Selamanya',
     category: 'candid',

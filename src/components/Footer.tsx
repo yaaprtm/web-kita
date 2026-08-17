@@ -20,18 +20,18 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Title */}
-        <h3 className="font-hand text-4xl md:text-5xl font-bold text-white mb-2 tracking-wide">
-          {coupleData.groomName} <span className="text-dusty-pink">&</span> {coupleData.brideName}
+        <h3 className="font-hand text-5xl md:text-6xl font-extrabold text-white mb-2 tracking-widest uppercase">
+          NAYA
         </h3>
 
         {/* Closing Note */}
         <p className="font-hand text-xl text-ivory-200 max-w-lg mx-auto mb-6 leading-relaxed italic">
-          &ldquo;terima kasih sudah mampir dan baca jurnal kecil cerita kita. semoga harimu menyenangkan! 🧡&rdquo;
+          &ldquo;makasih ya udah mampir dan baca jurnal cerita NAYA. semoga harimu makin seru! 🧡&rdquo;
         </p>
 
         {/* Anniversary Badge */}
         <div className="tape-strip text-sm font-hand text-warm-800 mb-6">
-          ✨ resmi jadian • 2 November 2025
+          ✨ NAYA resmi jadian • 2 November 2025
         </div>
 
         {/* Anniversary Page Link */}
@@ -40,7 +40,7 @@ export const Footer: React.FC = () => {
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-dusty-rose/30 border border-white/20 text-ivory-100 hover:text-white font-hand text-lg transition-all duration-200 mb-10 group"
         >
           <Gift size={16} className="group-hover:animate-bounce text-mustard-300" />
-          <span>Kejutan Anniversary Pertama 🎁</span>
+          <span>Kejutan Anniversary NAYA 🎁</span>
         </Link>
 
         {/* Divider */}
@@ -48,13 +48,13 @@ export const Footer: React.FC = () => {
 
         {/* Copyright & Back To Top */}
         <div className="w-full flex flex-col md:flex-row items-center justify-between gap-4 font-hand text-base text-ivory-300">
-          <p>© {new Date().getFullYear()} Jurnal Digital Arya & Nadina. dibuat penuh cinta.</p>
+          <p>© {new Date().getFullYear()} Jurnal Digital NAYA. Dibuat penuh cinta.</p>
 
           <button
             onClick={scrollToTop}
             className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-hand text-base transition-all border border-white/20 group"
           >
-            <span>ke atas</span>
+            <span>balik ke atas</span>
             <ArrowUp size={14} className="group-hover:-translate-y-0.5 transition-transform" />
           </button>
         </div>

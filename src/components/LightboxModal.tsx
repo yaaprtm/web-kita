@@ -119,7 +119,7 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({
 
           <div className="pt-6 mt-6 border-t border-warm-200 flex items-center justify-between">
             <span className="font-hand text-lg text-warm-800 italic">
-              Arya & Nadina Journal
+              NAYA Journal 📖
             </span>
             <Heart size={16} className="text-dusty-rose fill-current" />
           </div>

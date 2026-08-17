@@ -95,15 +95,15 @@ export const LoveMap: React.FC = () => {
 
         {/* Section Header */}
         <div className="text-center mb-12">
-          <SectionLabel color="bg-dusty-light">🗺️ peta jejak kita</SectionLabel>
+          <SectionLabel color="bg-dusty-light">🗺️ peta jejak NAYA</SectionLabel>
           
           <h2 className="font-hand text-4xl md:text-6xl font-bold text-warm-900 mt-3 mb-2">
-            Peta Perjalanan Cinta
+            Peta Perjalanan NAYA
           </h2>
-          <DoodleUnderline className="text-mustard-500 mx-auto mb-3" width={200} />
+          <DoodleUnderline className="text-dusty-pink mx-auto mb-3" width={200} />
           
           <p className="font-hand text-xl text-warm-700 max-w-lg mx-auto italic">
-            7 titik lokasi saksi perjalanan kita. Klik pin lokasi buat baca ceritanya.
+            7 titik tempat bersejarah NAYA. Klik aja pin lokasinya buat tau ceritanya!
           </p>
         </div>
 
@@ -207,7 +207,7 @@ export const LoveMap: React.FC = () => {
 
           <p className="text-center font-hand text-base text-warm-700 mt-2 opacity-80 flex items-center justify-center gap-1.5">
             <MapPin size={14} className="text-dusty-rose" />
-            klik titik pin untuk baca cerita lengkap di tiap lokasi ✨
+            klik pin lokasi mana aja buat liat ceritanya ya ✨
           </p>
         </div>
 
@@ -237,7 +237,7 @@ export const LoveMap: React.FC = () => {
             );
           })}
           <p className="text-center font-hand text-base text-warm-700 opacity-80">
-            tap kartu untuk membaca cerita lengkap ✨
+            tap kartu lokasinya buat baca cerita lengkapnya ✨
           </p>
         </div>
 

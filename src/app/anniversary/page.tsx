@@ -13,36 +13,36 @@ const UNLOCK_DATE = new Date('2026-11-02T00:00:00');
 const HIGHLIGHT_PHOTOS = [
   {
     url: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=600&auto=format&fit=crop',
-    caption: 'Awal mula segalanya',
+    caption: 'Awal mula nyapa di Warkop',
   },
   {
     url: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=600&auto=format&fit=crop',
-    caption: 'Kopi & obrolan sore hari',
+    caption: 'Kopi & obrolan di Hood',
   },
   {
     url: 'https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?q=80&w=600&auto=format&fit=crop',
-    caption: 'Perjalanan ke Puncak',
+    caption: 'Neduh hujan pas ke Puncak',
   },
   {
     url: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=600&auto=format&fit=crop',
-    caption: 'Hari paling berkesan',
+    caption: 'Momen nembak di Bogor',
   },
   {
     url: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=600&auto=format&fit=crop',
-    caption: 'Perjalanan bersama',
+    caption: 'Perjalanan barengan',
   },
   {
     url: 'https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=600&auto=format&fit=crop',
-    caption: 'Satu tahun bahagia',
+    caption: 'Satu tahun NAYA',
   },
 ];
 
 /** Statistik playful. Angka bisa disesuaikan. */
 const STATS = [
-  { value: '365', label: 'Hari sudah kita lalui bersama', emoji: '📅' },
-  { value: '7', label: 'Lokasi berkesan yang jadi saksi', emoji: '📍' },
-  { value: '∞', label: 'Cangkir kopi yang kita nikmati', emoji: '☕' },
-  { value: '1', label: 'Tahun penuh cinta yang sesungguhnya', emoji: '💖' },
+  { value: '365', label: 'Hari udah kita laluin bareng', emoji: '📅' },
+  { value: '7', label: 'Spot lokasi bersejarah kita', emoji: '📍' },
+  { value: '∞', label: 'Cangkir kopi yang udah diminum', emoji: '☕' },
+  { value: '1', label: 'Tahun penuh cerita NAYA', emoji: '💖' },
 ];
 // ─── END CONFIGURATION ────────────────────────────────────────────────────────
 
@@ -96,7 +96,7 @@ function LockedView({ timeLeft }: { timeLeft: { days: number; hours: number; min
         className="absolute top-6 left-6 inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/80 border border-blush-100 text-warm-800 text-xs font-medium hover:bg-blush-50 transition-colors shadow-sm"
       >
         <ArrowLeft size={14} />
-        Kembali ke Beranda
+        Balik ke Beranda
       </Link>
 
       {/* Gift icon */}
@@ -106,14 +106,14 @@ function LockedView({ timeLeft }: { timeLeft: { days: number; hours: number; min
 
       <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blush-100/80 border border-blush-200 text-blush-500 text-xs font-semibold uppercase tracking-widest mb-4">
         <Sparkles size={13} className="text-rosegold-gold" />
-        <span>Kejutan Anniversary Pertama</span>
+        <span>Kejutan Anniversary NAYA</span>
       </div>
 
       <h1 className="font-serif text-4xl md:text-6xl font-bold text-warm-900 mb-4">
-        Sabar ya, <span className="text-blush-500">Sayangku</span> 🤍
+        Sabar dulu ya, <span className="text-blush-500">Sayang</span> 🤍
       </h1>
       <p className="font-serif italic text-warm-700 text-base md:text-xl max-w-lg mb-10">
-        Kejutan ini akan terbuka tepat pada hari spesial kita — <strong className="not-italic">2 November 2026</strong>. Kamu sudah tidak sabar? Begitu juga aku.
+        Kejutan ini baru bisa dibuka pas hari anniversary NAYA nanti — <strong className="not-italic">2 November 2026</strong>. Penasaran kan? Sama, aku juga!
       </p>
 
       {/* Countdown Grid */}
@@ -130,7 +130,7 @@ function LockedView({ timeLeft }: { timeLeft: { days: number; hours: number; min
 
       <p className="text-sm text-warm-700 font-medium flex items-center gap-2">
         <Clock size={14} className="text-rosegold-gold" />
-        Menghitung mundur menuju hari paling spesial kita ✨
+        Menghitung mundur ke hari paling spesial NAYA ✨
       </p>
     </div>
   );
@@ -164,12 +164,12 @@ function UnlockedView() {
 
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blush-100/80 border border-blush-200 text-blush-500 text-xs font-semibold uppercase tracking-widest mb-4">
           <Sparkles size={13} className="text-rosegold-gold" />
-          <span>Happy 1st Anniversary</span>
+          <span>Happy 1st Anniversary NAYA</span>
         </div>
 
         <h1 className="font-serif text-4xl md:text-6xl font-bold text-warm-900 mb-2 leading-tight">
-          Selamat Satu Tahun, <br />
-          <span className="text-blush-500">Arya & Nadina</span> 💖
+          Selamat 1 Tahun, <br />
+          <span className="text-blush-500">NAYA</span> 💖
         </h1>
         <p className="text-sm font-medium text-rosegold-dark uppercase tracking-widest mb-10">2 November 2025 — 2 November 2026</p>
 
@@ -179,13 +179,13 @@ function UnlockedView() {
           <span className="absolute top-4 left-5 text-8xl font-serif text-blush-100 leading-none select-none">&ldquo;</span>
           <div className="relative z-10">
             <p className="font-serif italic text-warm-800 text-base md:text-lg leading-relaxed mb-4">
-              Setahun yang lalu, semuanya dimulai dari pertemuan tidak sengaja di suatu malam yang sederhana. Siapa sangka malam itu akan menjadi awal dari sesuatu yang begitu indah dan berarti.
+              Gak kerasa udah setahun aja ya sejak kita ketemu gak sengaja malam itu. Siapa yang nyangka coba, dari nongkrong ngopi santai malah jadi perjalanan seru yang sejauh ini.
             </p>
             <p className="font-serif italic text-warm-800 text-base md:text-lg leading-relaxed mb-4">
-              Satu tahun bersama — dari kopi pertama, perjalanan hujan, malam di Puncak, hingga semua hari biasa yang terasa luar biasa karena ada kamu di dalamnya. Terima kasih sudah jadi orang yang paling aku percaya.
+              Setahun bareng NAYA — dari kopi pertama di Cakasa, neduh pas hujan di Depok, dingin-dinginan di Puncak, sampe hari-hari biasa yang tetep seru gara-gara ada kamu. Makasih banyak ya udah selalu ada dan bisa dipercaya banget.
             </p>
             <p className="font-serif italic text-warm-800 text-base md:text-lg leading-relaxed">
-              Semoga di tahun kedua, ketiga, dan seterusnya — kamu masih mau duduk di sebelahku, memesan kopi yang sama, dan bercerita tentang hari-hari yang sudah kita lalui bersama. Aku cinta kamu.
+              Semoga di tahun-tahun berikutnya, kamu tetep betah duduk di sampingku, pesen kopi langganan kita, terus ngobrolin hal-hal random bareng. Love you!
             </p>
             <p className="font-serif font-bold text-warm-900 mt-6 text-right">— Arya 💌</p>
           </div>
@@ -195,7 +195,7 @@ function UnlockedView() {
         <div className="w-full mb-14">
           <div className="flex items-center gap-2 justify-center mb-6">
             <Camera size={18} className="text-rosegold-gold" />
-            <h2 className="font-serif text-2xl font-bold text-warm-900">Momen Terbaik Setahun Ini</h2>
+            <h2 className="font-serif text-2xl font-bold text-warm-900">Momen Seru NAYA Setahun Ini</h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {HIGHLIGHT_PHOTOS.map((photo, idx) => (
@@ -222,7 +222,7 @@ function UnlockedView() {
         <div className="w-full mb-14">
           <div className="flex items-center gap-2 justify-center mb-6">
             <Star size={18} className="text-rosegold-gold fill-current" />
-            <h2 className="font-serif text-2xl font-bold text-warm-900">Satu Tahun Dalam Angka</h2>
+            <h2 className="font-serif text-2xl font-bold text-warm-900">Satu Tahun NAYA Dalam Angka</h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {STATS.map((stat, idx) => (
@@ -241,17 +241,17 @@ function UnlockedView() {
           <div className="relative z-10 flex flex-col items-center text-center">
             <Heart size={28} className="fill-current text-blush-400 mb-4 animate-pulse" />
             <h3 className="font-serif text-2xl md:text-3xl font-bold mb-3">
-              Dan cerita ini belum selesai.
+              Dan cerita NAYA masih terus lanjut!
             </h3>
             <p className="font-serif italic text-ivory-200 text-base md:text-lg max-w-md mb-8">
-              Terima kasih sudah hadir, sudah mau bertahan, dan sudah memilih untuk terus melangkah bersama kami. Masih banyak momen yang menanti untuk diceritakan. 🤍
+              Makasih udah selalu ada, udah mau bertahan, dan memilih buat jalan bareng terus. Masih banyak momen seru lain yang nunggu kita di depan! 🤍
             </p>
             <Link
               href="/"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-warm-900 font-semibold text-sm hover:bg-blush-50 transition-colors shadow-md"
             >
               <Home size={16} />
-              Kembali ke Beranda
+              Balik ke Beranda
             </Link>
           </div>
         </div>

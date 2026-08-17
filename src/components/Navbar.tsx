@@ -32,13 +32,13 @@ export const Navbar: React.FC = () => {
     >
       <div className="max-w-6xl mx-auto px-4 md:px-8 flex items-center justify-between">
         {/* Brand */}
-        <a href="#hero" className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 rounded-full bg-dusty-light flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
-            <Heart size={15} className="fill-current text-dusty-rose" />
-          </div>
-          <span className="font-hand text-2xl md:text-3xl font-bold text-warm-900 group-hover:text-dusty-rose transition-colors tracking-wide">
-            {coupleData.groomName} <span className="text-dusty-rose">&</span> {coupleData.brideName}
+        <a href="#hero" className="flex items-center gap-2 group">
+          <span className="font-hand text-3xl md:text-4xl font-extrabold text-warm-900 group-hover:text-dusty-rose transition-colors tracking-widest uppercase">
+            NAYA
           </span>
+          <div className="w-7 h-7 rounded-full bg-dusty-light flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
+            <Heart size={14} className="fill-current text-dusty-rose" />
+          </div>
         </a>
 
         {/* Desktop Nav */}

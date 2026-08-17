@@ -3,13 +3,13 @@ import "./globals.css";
 import { coupleData } from "@/data/couple";
 
 export const metadata: Metadata = {
-  title: `${coupleData.groomName} & ${coupleData.brideName} — Jurnal Digital Kita`,
+  title: "NAYA — Jurnal Perjalanan Cinta Kita",
   description: coupleData.tagline,
-  keywords: ["Arya Nadina", "Website Couple", "Jurnal Digital Arya Nadina"],
+  keywords: ["NAYA", "Nadina Arya", "Arya Nadina", "Website Couple", "Jurnal Digital NAYA"],
   openGraph: {
-    title: `${coupleData.groomName} & ${coupleData.brideName} — Jurnal Digital Kita`,
+    title: "NAYA — Jurnal Perjalanan Cinta Kita",
     description: coupleData.tagline,
-    images: [{ url: coupleData.heroPhoto, width: 1200, height: 630, alt: `${coupleData.groomName} & ${coupleData.brideName}` }],
+    images: [{ url: coupleData.heroPhoto, width: 1200, height: 630, alt: "NAYA" }],
     type: "website",
   },
 };

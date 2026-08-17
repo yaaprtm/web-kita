@@ -16,15 +16,15 @@ export const Timeline: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center mb-16 relative">
-          <SectionLabel color="bg-mustard-100">📖 cerita kita</SectionLabel>
+          <SectionLabel color="bg-mustard-100">📖 cerita NAYA</SectionLabel>
           
           <h2 className="font-hand text-4xl md:text-6xl font-bold text-warm-900 mt-3 mb-2">
-            Timeline Perjalanan Hubungan
+            Perjalanan Cerita NAYA
           </h2>
           <DoodleUnderline className="text-dusty-pink mx-auto mb-3" width={220} />
           
           <p className="font-hand text-xl text-warm-700 max-w-lg mx-auto italic">
-            dari yang awalnya cuma kebetulan, sampai akhirnya kita melangkah bareng setiap hari.
+            dari yang awalnya cuma ketemuan gak sengaja, eh malah keterusan bareng tiap hari.
           </p>
 
           <DoodleStar className="absolute top-0 right-10 text-mustard-500 opacity-60" size={24} />
