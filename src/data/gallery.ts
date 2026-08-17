@@ -87,7 +87,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     date: '2 November 2025',
     location: 'Warung Jamu Pinggir Jalan',
     category: 'memory',
-    url: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?q=80&w=800&auto=format&fit=crop',
+    url: '/images/gallery/stmj.jpeg',
   },
   {
     id: 'gal-8',
