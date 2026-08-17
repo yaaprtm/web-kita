@@ -30,24 +30,14 @@ const PolaroidCard: React.FC<PolaroidCardProps> = ({ photo, idx, onSelect }) => 
   const rotation = PRESET_ROTATIONS[idx % PRESET_ROTATIONS.length];
   const tapeColor = WASHI_COLORS[idx % WASHI_COLORS.length];
 
-  // Smart media detection
-  const isVideo =
-    photo.type === 'video' ||
-    photo.url.endsWith('.mp4') ||
-    photo.url.endsWith('.webm') ||
-    (!!photo.poster && (photo.poster.endsWith('.mp4') || photo.poster.endsWith('.webm')));
+  // Media detection following standard structure:
+  // photo.url  -> Image thumbnail path
+  // photo.poster -> Video file path (for video items)
+  const isVideo = photo.type === 'video' || photo.url.endsWith('.mp4') || photo.url.endsWith('.webm');
 
-  const videoSrc = photo.url.endsWith('.mp4') || photo.url.endsWith('.webm')
+  const thumbnailImg = (!photo.url.endsWith('.mp4') && !photo.url.endsWith('.webm'))
     ? photo.url
-    : (photo.poster && (photo.poster.endsWith('.mp4') || photo.poster.endsWith('.webm')))
-      ? photo.poster
-      : photo.url;
-
-  const posterImg = photo.poster && !photo.poster.endsWith('.mp4') && !photo.poster.endsWith('.webm')
-    ? photo.poster
-    : (!photo.url.endsWith('.mp4') && !photo.url.endsWith('.webm'))
-      ? photo.url
-      : undefined;
+    : photo.poster;
 
   // Motion values for 3D tilt effect on hover
   const x = useMotionValue(0);
@@ -113,22 +103,18 @@ const PolaroidCard: React.FC<PolaroidCardProps> = ({ photo, idx, onSelect }) => 
               {isVideo ? (
                 <>
                   {/* Video thumbnail / poster */}
-                  {posterImg ? (
+                  {thumbnailImg ? (
                     <Image
-                      src={posterImg}
+                      src={thumbnailImg}
                       alt={photo.title}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                   ) : (
-                    <video
-                      src={videoSrc}
-                      muted
-                      playsInline
-                      preload="metadata"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
+                    <div className="w-full h-full bg-warm-800 flex items-center justify-center text-white/50 text-xs">
+                      No Thumbnail
+                    </div>
                   )}
 
                   {/* Centered Play Icon Overlay for Videos */}

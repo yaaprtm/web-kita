@@ -30,8 +30,8 @@ export const galleryPhotos: GalleryPhoto[] = [
     date: 'Oktober 2025',
     location: 'Hood Cipinang',
     category: 'date',
-    url: '/video/gallery/video2.mp4',
-    poster: '/images/gallery/photo2.jpg',
+    url: '/images/gallery/photo2.jpg',
+    poster: '/video/gallery/video2.mp4',
   },
   {
     id: 'gal-3',
@@ -42,7 +42,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     date: '1 November 2025',
     location: 'Indomaret Depok',
     category: 'trip',
-    url: '/images/gallery/photo3.jpg',
+    url: '/images/gallery/photo3.jpeg',
   },
   {
     id: 'gal-4',
@@ -75,8 +75,8 @@ export const galleryPhotos: GalleryPhoto[] = [
     date: '2 November 2025',
     location: 'Jalan Raya Bogor',
     category: 'trip',
-    url: '/video/gallery/video1.mp4',
-    poster: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=800&auto=format&fit=crop',
+    url: '/images/gallery/photo6.jpg',
+    poster: '/video/gallery/video1.mp4',
   },
   {
     id: 'gal-7',
@@ -98,7 +98,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     date: '2 November 2025',
     location: 'Jalan Raya Bogor',
     category: 'date',
-    url: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=800&auto=format&fit=crop',
+    url: '/images/gallery/photo10.jpg',
   },
   {
     id: 'gal-9',
@@ -109,6 +109,6 @@ export const galleryPhotos: GalleryPhoto[] = [
     date: '2 November 2025',
     location: 'Bersama Selamanya',
     category: 'candid',
-    url: 'https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=800&auto=format&fit=crop',
+    url: '/images/gallery/photo9.jpg',
   },
 ];

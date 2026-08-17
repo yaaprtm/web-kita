@@ -78,23 +78,18 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({
         {/* Photo / Video Container */}
         <div className="relative w-full md:w-2/3 aspect-square md:aspect-auto min-h-[300px] md:min-h-[480px] bg-warm-900 flex items-center justify-center overflow-hidden">
           {(() => {
-            const isVideo =
-              photo.type === 'video' ||
-              photo.url.endsWith('.mp4') ||
-              photo.url.endsWith('.webm') ||
-              (!!photo.poster && (photo.poster.endsWith('.mp4') || photo.poster.endsWith('.webm')));
+            const isVideo = photo.type === 'video' || photo.url.endsWith('.mp4') || photo.url.endsWith('.webm');
 
-            const videoSrc = photo.url.endsWith('.mp4') || photo.url.endsWith('.webm')
-              ? photo.url
-              : (photo.poster && (photo.poster.endsWith('.mp4') || photo.poster.endsWith('.webm')))
-                ? photo.poster
-                : photo.url;
-
-            const posterImg = photo.poster && !photo.poster.endsWith('.mp4') && !photo.poster.endsWith('.webm')
+            // Standard structure: photo.poster is video path, photo.url is image thumbnail
+            const videoSrc = (photo.poster && (photo.poster.endsWith('.mp4') || photo.poster.endsWith('.webm')))
               ? photo.poster
-              : (!photo.url.endsWith('.mp4') && !photo.url.endsWith('.webm'))
+              : photo.url.endsWith('.mp4') || photo.url.endsWith('.webm')
                 ? photo.url
-                : undefined;
+                : photo.poster || photo.url;
+
+            const posterImg = (!photo.url.endsWith('.mp4') && !photo.url.endsWith('.webm'))
+              ? photo.url
+              : undefined;
 
             if (isVideo) {
               return (
