@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Coffee, Car, Utensils, Mic, Palette, Gift, CheckCircle2, CircleDashed } from 'lucide-react';
+import { Coffee, Car, Utensils, Mic, Palette, Gift, Mountain, CheckCircle2, CircleDashed, Coins, Sparkles } from 'lucide-react';
 import { bucketListData } from '@/data/bucketlist';
 import { BucketListItem } from '@/types';
 import { SectionLabel, DoodleUnderline, WashiTape, DoodleStar } from './Doodles';
@@ -13,6 +13,7 @@ const iconMap: Record<BucketListItem['iconName'], React.ReactNode> = {
   mic: <Mic size={24} className="text-warm-800" />,
   palette: <Palette size={24} className="text-warm-800" />,
   gift: <Gift size={24} className="text-warm-800" />,
+  mountain: <Mountain size={24} className="text-warm-800" />,
 };
 
 const WASHI_COLORS = [
@@ -22,10 +23,21 @@ const WASHI_COLORS = [
   'rgba(180,210,190,0.75)',
 ];
 
+const formatRupiah = (amount: number): string => {
+  return 'Rp ' + amount.toLocaleString('id-ID');
+};
+
 export const BucketList: React.FC = () => {
   const completedCount = bucketListData.filter((item) => item.achieved).length;
   const totalCount = bucketListData.length;
   const percentage = Math.round((completedCount / totalCount) * 100);
+
+  // Total budget calculation
+  const totalTargetBudget = bucketListData.reduce((sum, item) => sum + item.targetBudget, 0);
+  const totalCurrentSaved = bucketListData.reduce((sum, item) => sum + item.currentSaved, 0);
+  const totalBudgetPercentage = totalTargetBudget > 0 
+    ? Math.min(100, Math.round((totalCurrentSaved / totalTargetBudget) * 100))
+    : 0;
 
   return (
     <section id="bucketlist" className="py-20 px-4 md:px-8 relative bg-ivory-100/90 overflow-hidden">
@@ -47,41 +59,73 @@ export const BucketList: React.FC = () => {
           <DoodleStar className="absolute top-2 right-12 text-mustard-500 opacity-60" size={26} />
         </div>
 
-        {/* Progress Counter Card */}
-        <div className="max-w-xl mx-auto mb-12 bg-white/90 backdrop-blur-md rounded-3xl p-6 border-2 border-dashed border-warm-200 shadow-card-warm relative">
-          <div className="flex items-center justify-between gap-4 mb-3">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-blush-100 flex items-center justify-center text-blush-500 font-bold">
-                🎯
+        {/* Dual Summary Card: Progress Wishlist & Total Budget */}
+        <div className="max-w-2xl mx-auto mb-12 grid grid-cols-1 md:grid-cols-2 gap-4">
+          
+          {/* Wishlist Counter Card */}
+          <div className="bg-white/90 backdrop-blur-md rounded-3xl p-5 border-2 border-dashed border-warm-200 shadow-card-warm flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between gap-2 mb-2">
+                <div className="flex items-center gap-2">
+                  <span className="w-7 h-7 rounded-full bg-blush-100 flex items-center justify-center text-sm">🎯</span>
+                  <span className="font-hand text-lg font-bold text-warm-900">Mimpi Terwujud</span>
+                </div>
+                <span className="font-hand text-sm font-bold text-dusty-rose bg-ivory-100 px-2.5 py-0.5 rounded-full border border-warm-200">
+                  {completedCount}/{totalCount}
+                </span>
               </div>
-              <span className="font-hand text-xl font-bold text-warm-900">
-                Progress Impian Kita
-              </span>
+              <div className="w-full bg-warm-100 h-3 rounded-full overflow-hidden border border-warm-200 p-0.5 mb-2">
+                <div
+                  className="bg-gradient-to-r from-mustard-400 to-dusty-rose h-full rounded-full transition-all duration-700"
+                  style={{ width: `${percentage}%` }}
+                />
+              </div>
             </div>
-            <span className="font-hand text-lg font-bold text-dusty-rose bg-ivory-100 px-3 py-1 rounded-full border border-warm-200">
-              {completedCount}/{totalCount} Sudah Kesampaian
-            </span>
+            <p className="font-hand text-xs text-warm-600 italic opacity-80">
+              {completedCount === 0
+                ? 'Pelan-pelan kita wujudin satu per satu!'
+                : `${completedCount} impian udah terwujud! 🎉`}
+            </p>
           </div>
 
-          {/* Progress Bar */}
-          <div className="w-full bg-warm-100 h-4 rounded-full overflow-hidden border border-warm-200 p-0.5">
-            <div
-              className="bg-gradient-to-r from-mustard-400 via-dusty-pink to-dusty-rose h-full rounded-full transition-all duration-700"
-              style={{ width: `${percentage}%` }}
-            />
+          {/* Total Savings Budget Summary Card */}
+          <div className="bg-white/90 backdrop-blur-md rounded-3xl p-5 border-2 border-dashed border-warm-200 shadow-card-warm flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between gap-2 mb-2">
+                <div className="flex items-center gap-2">
+                  <div className="w-7 h-7 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 font-bold text-sm">
+                    <Coins size={15} />
+                  </div>
+                  <span className="font-hand text-lg font-bold text-warm-900">Total Tabungan</span>
+                </div>
+                <span className="font-hand text-xs font-bold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
+                  {totalBudgetPercentage}%
+                </span>
+              </div>
+              <div className="w-full bg-warm-100 h-3 rounded-full overflow-hidden border border-warm-200 p-0.5 mb-2">
+                <div
+                  className="bg-gradient-to-r from-amber-400 to-emerald-500 h-full rounded-full transition-all duration-700"
+                  style={{ width: `${totalBudgetPercentage}%` }}
+                />
+              </div>
+            </div>
+            <div className="font-hand text-xs text-warm-700 flex items-center justify-between font-semibold">
+              <span>{formatRupiah(totalCurrentSaved)}</span>
+              <span className="text-warm-500 font-normal">Target: {formatRupiah(totalTargetBudget)}</span>
+            </div>
           </div>
 
-          <p className="text-center font-hand text-sm text-warm-600 mt-2 opacity-80">
-            {completedCount === 0
-              ? '✨ Banyak hal seru menanti untuk kita centang!'
-              : `🎉 Pelan-pelan tapi pasti, ${completedCount} impian udah terwujud!`}
-          </p>
         </div>
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {bucketListData.map((item, idx) => {
             const tapeColor = WASHI_COLORS[idx % WASHI_COLORS.length];
+            const itemSavedPercent = item.targetBudget > 0
+              ? Math.min(100, Math.round((item.currentSaved / item.targetBudget) * 100))
+              : 0;
+            const isFundReady = item.currentSaved >= item.targetBudget && item.targetBudget > 0;
+
             return (
               <div
                 key={item.id}
@@ -91,23 +135,34 @@ export const BucketList: React.FC = () => {
                 <WashiTape color={tapeColor} top={-9} left={20} rotate={idx % 2 === 0 ? '-3deg' : '3deg'} />
 
                 <div>
-                  {/* Top Header: Icon + Status Badge */}
-                  <div className="flex items-start justify-between gap-3 mb-4 pt-2">
+                  {/* Top Header: Icon + Badges */}
+                  <div className="flex items-start justify-between gap-2 mb-4 pt-2 flex-wrap">
                     <div className="w-12 h-12 rounded-2xl bg-ivory-100 border border-warm-200 flex items-center justify-center shadow-xs group-hover:scale-110 transition-transform">
                       {iconMap[item.iconName]}
                     </div>
 
-                    {item.achieved ? (
-                      <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-100 border border-emerald-300 text-emerald-800 font-hand text-xs font-bold shadow-xs">
-                        <CheckCircle2 size={13} className="text-emerald-600" />
-                        Sudah Kesampaian
-                      </span>
-                    ) : (
-                      <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-mustard-100 border border-mustard-300/60 text-warm-800 font-hand text-xs font-semibold shadow-xs">
-                        <CircleDashed size={13} className="text-mustard-600 animate-spin-slow" />
-                        Belum Kesampaian
-                      </span>
-                    )}
+                    <div className="flex flex-col items-end gap-1.5">
+                      {/* Status Badge */}
+                      {item.achieved ? (
+                        <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-100 border border-emerald-300 text-emerald-800 font-hand text-xs font-bold shadow-xs">
+                          <CheckCircle2 size={13} className="text-emerald-600" />
+                          Sudah Kesampaian
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-mustard-100 border border-mustard-300/60 text-warm-800 font-hand text-xs font-semibold shadow-xs">
+                          <CircleDashed size={13} className="text-mustard-600 animate-spin-slow" />
+                          Belum Kesampaian
+                        </span>
+                      )}
+
+                      {/* Dana Siap Badge */}
+                      {isFundReady && (
+                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-100 border border-amber-300 text-amber-900 font-hand text-[11px] font-bold shadow-xs">
+                          <Sparkles size={11} className="text-amber-600" />
+                          Dana Siap! 🎉
+                        </span>
+                      )}
+                    </div>
                   </div>
 
                   {/* Title */}
@@ -116,18 +171,43 @@ export const BucketList: React.FC = () => {
                   </h3>
 
                   {/* Description */}
-                  <p className="font-sans text-warm-700 text-sm leading-relaxed font-light mb-4">
+                  <p className="font-sans text-warm-700 text-sm leading-relaxed font-light mb-5">
                     {item.description}
                   </p>
                 </div>
 
-                {/* Card Bottom Meta */}
-                <div className="pt-3 border-t border-warm-100 flex items-center justify-between text-xs font-hand text-warm-600">
-                  <span>Wishlist #{idx + 1}</span>
-                  {item.achieved && item.dateAchieved && (
-                    <span className="text-emerald-700 font-bold">✨ {item.dateAchieved}</span>
-                  )}
+                {/* Savings Budget Progress Section */}
+                <div className="pt-4 border-t border-warm-100">
+                  <div className="flex items-center justify-between text-xs font-hand text-warm-700 mb-1.5 font-bold">
+                    <span className="flex items-center gap-1 text-warm-800">
+                      <Coins size={13} className="text-amber-600" /> Tabungan
+                    </span>
+                    <span>
+                      {formatRupiah(item.currentSaved)} / {formatRupiah(item.targetBudget)}
+                    </span>
+                  </div>
+
+                  {/* Item Budget Progress Bar */}
+                  <div className="w-full bg-warm-100 h-2.5 rounded-full overflow-hidden border border-warm-200 p-0.5">
+                    <div
+                      className={`h-full rounded-full transition-all duration-500 ${
+                        isFundReady
+                          ? 'bg-gradient-to-r from-amber-400 to-emerald-500'
+                          : 'bg-gradient-to-r from-mustard-300 to-dusty-pink'
+                      }`}
+                      style={{ width: `${itemSavedPercent}%` }}
+                    />
+                  </div>
+
+                  {/* Wishlist index */}
+                  <div className="mt-3 flex items-center justify-between text-[11px] font-hand text-warm-500 opacity-80">
+                    <span>Wishlist #{idx + 1}</span>
+                    {item.achieved && item.dateAchieved && (
+                      <span className="text-emerald-700 font-bold">✨ {item.dateAchieved}</span>
+                    )}
+                  </div>
                 </div>
+
               </div>
             );
           })}

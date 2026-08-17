@@ -60,7 +60,9 @@ export interface BucketListItem {
   id: string;
   title: string;
   description: string;
-  iconName: 'coffee' | 'car' | 'utensils' | 'mic' | 'palette' | 'gift';
+  iconName: 'coffee' | 'car' | 'utensils' | 'mic' | 'palette' | 'gift' | 'mountain';
   achieved: boolean;
   dateAchieved?: string;
+  targetBudget: number;
+  currentSaved: number;
 }
