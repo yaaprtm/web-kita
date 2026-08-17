@@ -2,13 +2,11 @@ import { GalleryPhoto } from '@/types';
 
 /**
  * ====================================================================
- * DATA GALERI FOTO KENANGAN (ARYA & NADINA)
+ * DATA GALERI FOTO & VIDEO KENANGAN (NAYA)
  * ====================================================================
- * Anda bisa menambah, mengurangi, atau mengganti foto & caption di sini.
- * 
- * CARA MENGGANTI FOTO GALERI:
- * 1. Simpan foto-foto Anda di folder `public/images/gallery/` (misal: photo1.jpg)
- * 2. Ubah atribut `url` di bawah menjadi `/images/gallery/photo1.jpg`
+ * CARA MENGGANTI FOTO & VIDEO:
+ * 1. Foto: simpan di `public/images/gallery/` (contoh: /images/gallery/photo1.jpeg)
+ * 2. Video: simpan di `public/video/gallery/` (contoh: /video/gallery/video1.mp4)
  * ====================================================================
  */
 export const galleryPhotos: GalleryPhoto[] = [
@@ -25,14 +23,15 @@ export const galleryPhotos: GalleryPhoto[] = [
   },
   {
     id: 'gal-2',
-    type: 'photo',
+    type: 'video',
     title: 'Rutinitas Ngopi Hood',
     caption: 'Kopi sore abis ngampus.',
     backNote: 'Gak tau kenapa obrolan dari jam kuliah sampe hal gak penting di Hood Cipinang selalu kerasa seru dan gak pernah bikin bosen 🍵',
     date: 'Oktober 2025',
     location: 'Hood Cipinang',
     category: 'date',
-    url: '/images/gallery/photo2.jpg',
+    url: '/video/gallery/video2.mp4',
+    poster: '/images/gallery/photo2.jpg',
   },
   {
     id: 'gal-3',
@@ -54,7 +53,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     date: '1 November 2025',
     location: 'Gunung Mas, Puncak',
     category: 'trip',
-    url: '/images/gallery/photo4.jpg',
+    url: '/images/gallery/photo4.jpeg',
   },
   {
     id: 'gal-5',
@@ -65,7 +64,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     date: '1 November 2025',
     location: 'Green Coffee Puncak',
     category: 'memory',
-    url: '/images/gallery/photo5.jpg',
+    url: '/images/gallery/photo5.jpeg',
   },
   {
     id: 'gal-6',
@@ -76,7 +75,7 @@ export const galleryPhotos: GalleryPhoto[] = [
     date: '2 November 2025',
     location: 'Jalan Raya Bogor',
     category: 'trip',
-    url: 'https://assets.mixkit.co/videos/preview/mixkit-couple-walking-in-a-park-41584-large.mp4',
+    url: '/video/gallery/video1.mp4',
     poster: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=800&auto=format&fit=crop',
   },
   {

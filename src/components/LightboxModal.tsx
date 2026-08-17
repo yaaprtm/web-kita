@@ -77,27 +77,51 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({
         
         {/* Photo / Video Container */}
         <div className="relative w-full md:w-2/3 aspect-square md:aspect-auto min-h-[300px] md:min-h-[480px] bg-warm-900 flex items-center justify-center overflow-hidden">
-          {photo.type === 'video' ? (
-            <video
-              key={photo.id}
-              src={photo.url}
-              poster={photo.poster}
-              controls
-              autoPlay
-              loop
-              playsInline
-              className="w-full h-full object-contain max-h-[80vh]"
-            />
-          ) : (
-            <Image
-              src={photo.url}
-              alt={photo.title}
-              fill
-              className="object-contain"
-              priority
-              sizes="(max-width: 768px) 100vw, 800px"
-            />
-          )}
+          {(() => {
+            const isVideo =
+              photo.type === 'video' ||
+              photo.url.endsWith('.mp4') ||
+              photo.url.endsWith('.webm') ||
+              (!!photo.poster && (photo.poster.endsWith('.mp4') || photo.poster.endsWith('.webm')));
+
+            const videoSrc = photo.url.endsWith('.mp4') || photo.url.endsWith('.webm')
+              ? photo.url
+              : (photo.poster && (photo.poster.endsWith('.mp4') || photo.poster.endsWith('.webm')))
+                ? photo.poster
+                : photo.url;
+
+            const posterImg = photo.poster && !photo.poster.endsWith('.mp4') && !photo.poster.endsWith('.webm')
+              ? photo.poster
+              : (!photo.url.endsWith('.mp4') && !photo.url.endsWith('.webm'))
+                ? photo.url
+                : undefined;
+
+            if (isVideo) {
+              return (
+                <video
+                  key={photo.id}
+                  src={videoSrc}
+                  poster={posterImg}
+                  controls
+                  autoPlay
+                  loop
+                  playsInline
+                  className="w-full h-full object-contain max-h-[80vh]"
+                />
+              );
+            }
+
+            return (
+              <Image
+                src={photo.url}
+                alt={photo.title}
+                fill
+                className="object-contain"
+                priority
+                sizes="(max-width: 768px) 100vw, 800px"
+              />
+            );
+          })()}
         </div>
 
         {/* Details Sidebar */}

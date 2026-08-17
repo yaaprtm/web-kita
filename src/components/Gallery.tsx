@@ -29,7 +29,25 @@ const PolaroidCard: React.FC<PolaroidCardProps> = ({ photo, idx, onSelect }) => 
   const [isFlipped, setIsFlipped] = useState(false);
   const rotation = PRESET_ROTATIONS[idx % PRESET_ROTATIONS.length];
   const tapeColor = WASHI_COLORS[idx % WASHI_COLORS.length];
-  const isVideo = photo.type === 'video';
+
+  // Smart media detection
+  const isVideo =
+    photo.type === 'video' ||
+    photo.url.endsWith('.mp4') ||
+    photo.url.endsWith('.webm') ||
+    (!!photo.poster && (photo.poster.endsWith('.mp4') || photo.poster.endsWith('.webm')));
+
+  const videoSrc = photo.url.endsWith('.mp4') || photo.url.endsWith('.webm')
+    ? photo.url
+    : (photo.poster && (photo.poster.endsWith('.mp4') || photo.poster.endsWith('.webm')))
+      ? photo.poster
+      : photo.url;
+
+  const posterImg = photo.poster && !photo.poster.endsWith('.mp4') && !photo.poster.endsWith('.webm')
+    ? photo.poster
+    : (!photo.url.endsWith('.mp4') && !photo.url.endsWith('.webm'))
+      ? photo.url
+      : undefined;
 
   // Motion values for 3D tilt effect on hover
   const x = useMotionValue(0);
@@ -85,9 +103,8 @@ const PolaroidCard: React.FC<PolaroidCardProps> = ({ photo, idx, onSelect }) => 
 
         {/* 3D Flip Inner Container */}
         <div
-          className={`w-full transition-transform duration-700 [transform-style:preserve-3d] relative ${
-            isFlipped ? '[transform:rotateY(180deg)]' : ''
-          }`}
+          className={`w-full transition-transform duration-700 [transform-style:preserve-3d] relative ${isFlipped ? '[transform:rotateY(180deg)]' : ''
+            }`}
         >
           {/* FRONT SIDE */}
           <div className="polaroid w-full [backface-visibility:hidden] flex flex-col p-3.5 pb-4 rounded-xl bg-white shadow-card-warm border border-warm-200">
@@ -96,9 +113,9 @@ const PolaroidCard: React.FC<PolaroidCardProps> = ({ photo, idx, onSelect }) => 
               {isVideo ? (
                 <>
                   {/* Video thumbnail / poster */}
-                  {photo.poster ? (
+                  {posterImg ? (
                     <Image
-                      src={photo.poster}
+                      src={posterImg}
                       alt={photo.title}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -106,7 +123,7 @@ const PolaroidCard: React.FC<PolaroidCardProps> = ({ photo, idx, onSelect }) => 
                     />
                   ) : (
                     <video
-                      src={photo.url}
+                      src={videoSrc}
                       muted
                       playsInline
                       preload="metadata"
@@ -218,16 +235,16 @@ export const Gallery: React.FC = () => {
   return (
     <section id="gallery" className="py-20 px-4 md:px-8 relative bg-ivory-50/90 overflow-hidden">
       <div className="max-w-6xl mx-auto">
-        
+
         {/* Section Header */}
         <div className="text-center mb-14 relative">
           <SectionLabel color="bg-mustard-100">📷 foto NAYA</SectionLabel>
-          
+
           <h2 className="font-hand text-4xl md:text-6xl font-bold text-warm-900 mt-3 mb-2">
             Galeri Foto & Video NAYA
           </h2>
           <DoodleUnderline className="text-dusty-pink mx-auto mb-3" width={220} />
-          
+
           <p className="font-hand text-xl text-warm-700 max-w-lg mx-auto italic">
             Koleksi foto polaroid & klip kenangan NAYA. Tap/Klik buat balik foto atau klik tombol Play untuk memutar video!
           </p>
@@ -236,7 +253,7 @@ export const Gallery: React.FC = () => {
         </div>
 
         {/* Draggable & Flippable Polaroid Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 py-4 px-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 items-start py-2 px-2">
           {galleryPhotos.map((photo, idx) => (
             <PolaroidCard
               key={photo.id}
