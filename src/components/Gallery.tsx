@@ -26,6 +26,7 @@ interface PolaroidCardProps {
 }
 
 const PolaroidCard: React.FC<PolaroidCardProps> = ({ photo, idx, onSelect }) => {
+  const [isFlipped, setIsFlipped] = useState(false);
   const rotation = PRESET_ROTATIONS[idx % PRESET_ROTATIONS.length];
   const tapeColor = WASHI_COLORS[idx % WASHI_COLORS.length];
 
@@ -48,59 +49,116 @@ const PolaroidCard: React.FC<PolaroidCardProps> = ({ photo, idx, onSelect }) => 
     y.set(0);
   };
 
-  return (
-    <motion.div
-      drag
-      dragConstraints={{ left: -60, right: 60, top: -60, bottom: 60 }}
-      dragSnapToOrigin={true}
-      whileDrag={{ scale: 1.08, zIndex: 40 }}
-      initial={{ rotate: rotation }}
-      whileHover={{ scale: 1.04, rotate: 0, zIndex: 30 }}
-      style={{ rotateX, rotateY, perspective: 1000 }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className="polaroid relative rounded-sm cursor-grab active:cursor-grabbing"
-    >
-      {/* Washi Tape Strip */}
-      <WashiTape
-        color={tapeColor}
-        top={-9}
-        left={idx % 2 === 0 ? 16 : undefined}
-        right={idx % 2 !== 0 ? 16 : undefined}
-        rotate={idx % 2 === 0 ? '-6deg' : '6deg'}
-      />
+  const handleCardClick = () => {
+    setIsFlipped(!isFlipped);
+  };
 
-      {/* Image container */}
-      <div
-        onClick={() => onSelect(photo)}
-        className="relative aspect-[4/3] w-full overflow-hidden rounded-xs bg-warm-900 group cursor-pointer"
+  const handleZoomClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onSelect(photo);
+  };
+
+  return (
+    <div className="perspective-1000 w-full min-h-[380px] select-none">
+      <motion.div
+        drag
+        dragConstraints={{ left: -40, right: 40, top: -40, bottom: 40 }}
+        dragSnapToOrigin={true}
+        whileDrag={{ scale: 1.05, zIndex: 40 }}
+        initial={{ rotate: rotation }}
+        whileHover={{ scale: 1.03, rotate: 0, zIndex: 30 }}
+        style={{ rotateX, rotateY, perspective: 1000 }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        onClick={handleCardClick}
+        className="w-full h-full relative cursor-pointer group"
       >
-        <Image
-          src={photo.url}
-          alt={photo.title}
-          fill
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        {/* Washi Tape Strip */}
+        <WashiTape
+          color={tapeColor}
+          top={-9}
+          left={idx % 2 === 0 ? 16 : undefined}
+          right={idx % 2 !== 0 ? 16 : undefined}
+          rotate={idx % 2 === 0 ? '-6deg' : '6deg'}
         />
 
-        {/* Hover overlay badge */}
-        <div className="absolute inset-0 bg-warm-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          <span className="w-10 h-10 rounded-full bg-white/90 text-warm-900 flex items-center justify-center shadow-md">
-            <Eye size={20} />
-          </span>
-        </div>
-      </div>
+        {/* 3D Flip Inner Container */}
+        <div
+          className={`w-full h-full transition-transform duration-700 [transform-style:preserve-3d] relative ${
+            isFlipped ? '[transform:rotateY(180deg)]' : ''
+          }`}
+        >
+          {/* FRONT SIDE */}
+          <div className="polaroid w-full h-full [backface-visibility:hidden] flex flex-col justify-between">
+            {/* Image container */}
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xs bg-warm-900 group">
+              <Image
+                src={photo.url}
+                alt={photo.title}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              />
 
-      {/* Polaroid bottom caption */}
-      <div onClick={() => onSelect(photo)} className="pt-3 px-1 text-center cursor-pointer">
-        <p className="font-hand text-xl font-bold text-warm-900 leading-tight">
-          {photo.title}
-        </p>
-        <p className="font-hand text-sm text-warm-700 mt-0.5">
-          {photo.date} • {photo.location}
-        </p>
-      </div>
-    </motion.div>
+              {/* Hover overlay badge / Zoom trigger */}
+              <div className="absolute inset-0 bg-warm-900/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <button
+                  onClick={handleZoomClick}
+                  className="px-3 py-1.5 rounded-full bg-white/95 text-warm-900 font-hand text-sm font-bold shadow-md hover:bg-white flex items-center gap-1.5"
+                >
+                  <Eye size={15} /> Perbesar Foto
+                </button>
+              </div>
+            </div>
+
+            {/* Polaroid bottom caption */}
+            <div className="pt-3 px-1 text-center flex flex-col items-center">
+              <p className="font-hand text-xl font-bold text-warm-900 leading-tight">
+                {photo.title}
+              </p>
+              <p className="font-hand text-xs text-warm-700 mt-0.5">
+                {photo.date} • {photo.location}
+              </p>
+              <span className="mt-2.5 inline-flex items-center gap-1 text-[11px] font-hand text-dusty-rose bg-dusty-light/60 px-2.5 py-0.5 rounded-full border border-dusty-pink/30 shadow-xs">
+                🔄 Tap/Klik buat balik foto
+              </span>
+            </div>
+          </div>
+
+          {/* BACK SIDE */}
+          <div className="polaroid w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] absolute inset-0 bg-ivory-100 border-2 border-dashed border-warm-300 p-5 flex flex-col justify-between text-left">
+            <div>
+              <div className="flex items-center justify-between border-b border-warm-200 pb-2 mb-3">
+                <span className="font-hand text-xs font-bold uppercase tracking-wider text-dusty-rose">
+                  📝 Catatan Balik Foto
+                </span>
+                <span className="font-hand text-xs text-warm-600">{photo.date}</span>
+              </div>
+
+              {/* Handwritten Note */}
+              <p className="font-hand text-xl text-warm-900 leading-relaxed italic mb-4">
+                &ldquo;{photo.backNote || photo.caption}&rdquo;
+              </p>
+            </div>
+
+            <div>
+              <div className="pt-3 border-t border-warm-200 flex items-center justify-between">
+                <span className="font-hand text-xs text-warm-700">📍 {photo.location}</span>
+                <button
+                  onClick={handleZoomClick}
+                  className="px-3 py-1 rounded-full bg-dusty-pink/20 hover:bg-dusty-pink/40 text-warm-900 font-hand text-xs font-bold transition-colors flex items-center gap-1 border border-dusty-pink/30"
+                >
+                  <Eye size={13} /> Fullscreen
+                </button>
+              </div>
+              <div className="text-center mt-2">
+                <span className="text-[10px] font-hand text-warm-500">🔄 Tap untuk balik ke depan</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </div>
   );
 };
 
@@ -127,13 +185,13 @@ export const Gallery: React.FC = () => {
           <DoodleUnderline className="text-dusty-pink mx-auto mb-3" width={220} />
           
           <p className="font-hand text-xl text-warm-700 max-w-lg mx-auto italic">
-            Koleksi foto polaroid NAYA. Coba deh geser-geser fotonya atau klik buat liat detailnya!
+            Koleksi foto polaroid NAYA. Tap/Klik fotonya buat balik dan baca catatan di belakangnya!
           </p>
 
           <DoodleStar className="absolute top-2 left-12 text-dusty-pink opacity-50" size={26} />
         </div>
 
-        {/* Draggable Polaroid Grid */}
+        {/* Draggable & Flippable Polaroid Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 py-4 px-2">
           {galleryPhotos.map((photo, idx) => (
             <PolaroidCard
@@ -149,7 +207,7 @@ export const Gallery: React.FC = () => {
         <div className="mt-12 p-4 rounded-2xl bg-white border border-warm-200 shadow-sm max-w-xl mx-auto flex items-start gap-3 text-xs text-warm-800">
           <Info size={18} className="text-dusty-rose shrink-0 mt-0.5" />
           <div>
-            <span className="font-semibold text-warm-900">Tips Seru:</span> Foto polaroid NAYA di atas bisa kamu **geser-geser (drag)** pake mouse atau jari kamu! Klik fotonya buat liat cerita lengkapnya.
+            <span className="font-semibold text-warm-900">Tips Scrapbook:</span> Tap/Klik foto polaroid untuk **membalik foto** dan membaca pesan rahasia di baliknya. Kamu juga bisa menggeser (drag) foto pakai mouse/sentuhan HP!
           </div>
         </div>
 

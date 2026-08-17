@@ -5,7 +5,9 @@ import { MusicPlayer } from '@/components/MusicPlayer';
 import { CursorTrail } from '@/components/CursorTrail';
 import { Hero } from '@/components/Hero';
 import { Timeline } from '@/components/Timeline';
+import { MomentCalendar } from '@/components/MomentCalendar';
 import { LoveMap } from '@/components/LoveMap';
+import { BucketList } from '@/components/BucketList';
 import { Gallery } from '@/components/Gallery';
 import { Footer } from '@/components/Footer';
 
@@ -30,13 +32,19 @@ export default function Home() {
       {/* Section 2: Narrative Timeline */}
       <Timeline />
 
-      {/* Section 3: Interactive Love Journey Map */}
+      {/* Section 3: Kalender Momen NAYA */}
+      <MomentCalendar />
+
+      {/* Section 4: Interactive Love Journey Map */}
       <LoveMap />
 
-      {/* Section 4: Photo Gallery with Draggable Polaroids & Lightbox Modal */}
+      {/* Section 5: Bucket List Kita */}
+      <BucketList />
+
+      {/* Section 6: Photo Gallery with 3D Flip Polaroids & Lightbox Modal */}
       <Gallery />
 
-      {/* Section 5: Romantic Footer */}
+      {/* Section 7: Romantic Footer */}
       <Footer />
     </main>
   );

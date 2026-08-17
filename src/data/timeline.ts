@@ -12,7 +12,7 @@ export const timelineData: TimelineMoment[] = [
     id: 'momen-1',
     order: 1,
     title: 'Pertama Kali Ketemu',
-    dateStr: 'Akhir September 2025',
+    dateStr: '30 September 2025',
     location: 'Warkop Cakasa',
     badge: 'Malam Nggak Sengaja',
     story: 'Semua berawal di suatu malam di akhir September 2025. Arya lagi asik nongkrong di rumah temen, terus diajak ngopi ke Warkop Cakasa. Nah di situ, gak sengaja kita pertama kali ketemu terus sapa-sapaan santai. Siapa sangka dari secangkir kopi malam itu, cerita NAYA malah dimulai.',
@@ -39,9 +39,9 @@ export const timelineData: TimelineMoment[] = [
     dateStr: '1 - 2 November 2025',
     location: 'Depok, Puncak & Jalan Raya Bogor',
     badge: 'Fix Jadian! 💖',
-    story: 'Tanggal 1 November sore, Arya ngajak jalan ke Puncak — sebenernya emang udah punya niat nembak sih. Di jalan sempet hujan deras terus neduh di Indomaret Depok, malah jadi makin deket gara-gara Nadina banyak cerita soal keluarganya. Malamnya kita kelaparan & makan bakso Gunung Mas, lanjut ngopi di Green Coffee. Pas jalan balik yang dingin banget, ganti Nadina yang bawa motor terus sempet beli Kawa-Kawa di warung jamu biar anget. Akhirnya pas di Jalan Raya Bogor, Arya memberanikan diri nembak Nadina — dan fix resmi jadian 2 November 2025!',
+    story: 'Tanggal 1 November sore, Arya ngajak jalan ke Puncak — sebenernya emang udah punya niat nembak sih. Di jalan sempet hujan deras terus neduh di Indomaret Depok, malah jadi makin deket gara-gara Nadina banyak cerita soal keluarganya. Malamnya kita kelaparan & makan bakso Gunung Mas, lanjut ngopi di Green Coffee. Pas jalan balik yang dingin banget, ganti Nadina yang bawa motor terus sempet beli STMJ hangat di warung jamu biar anget. Akhirnya pas di Jalan Raya Bogor, Arya memberanikan diri nembak Nadina — dan fix resmi jadian 2 November 2025!',
     photoUrl: 'https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?q=80&w=1000&auto=format&fit=crop',
     photoCaption: 'Perjalanan Puncak & momen pas nembak di Jalan Raya Bogor 💍',
-    highlights: ['Berteduh di Depok', 'Bakso Gunung Mas', 'Kawa-Kawa Warung Jamu', 'Jalan Raya Bogor 2 Nov 2025']
+    highlights: ['Berteduh di Depok', 'Bakso Gunung Mas', 'STMJ Warung Jamu', 'Jalan Raya Bogor 2 Nov 2025']
   }
 ];

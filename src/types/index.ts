@@ -26,6 +26,7 @@ export interface GalleryPhoto {
   id: string;
   title: string;
   caption: string;
+  backNote?: string;
   date: string;
   location: string;
   url: string;
@@ -53,4 +54,13 @@ export interface MapLocation {
   color: 'blush' | 'rosegold' | 'warm' | 'gold';
   cx: number; // SVG x coordinate (0-100)
   cy: number; // SVG y coordinate (0-100)
+}
+
+export interface BucketListItem {
+  id: string;
+  title: string;
+  description: string;
+  iconName: 'coffee' | 'car' | 'utensils' | 'mic' | 'palette' | 'gift';
+  achieved: boolean;
+  dateAchieved?: string;
 }
